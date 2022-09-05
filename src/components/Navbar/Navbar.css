@@ -1,0 +1,25 @@
+.container {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100px;
+    width: 100%;
+}
+
+.links-container {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 100px;
+    width: 40%;
+}
+
+.search-container {
+    color: black;
+}
+
+.search-input {
+    color: black;
+}
