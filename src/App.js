@@ -1,12 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
 import Home from "./screen/Home/Home"
+import { Route, Switch } from "react-router-dom";
+import './App.css'
+import Favourites from "./screen/Favourites/Favourites";
+import HotTracks from "./screen/HotTracks/HotTracks";
 
 function App() {
   return (
-    <div className="App">
-      <Home />
-    </div>
+    <>
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/favoritos" component={Favourites} />
+        <Route path="/hot-tracks" component={HotTracks} />
+      </Switch>
+    </>
   );
 }
 

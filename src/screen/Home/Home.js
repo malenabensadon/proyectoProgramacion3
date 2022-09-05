@@ -3,7 +3,7 @@ import CardTracks from '../../components/CardTracks/CardTracks';
 import CardArtists from '../../components/CardArtists/CardArtists';
 import CardAlbums from '../../components/CardAlbums/CardAlbums';
 import './Home.css'
-
+import NavBar from '../../components/Navbar/Navbar';
 
 class Home extends Component {
     constructor() {
@@ -11,35 +11,90 @@ class Home extends Component {
         this.state = {
             tracks: [],
             artists: [],
-            albums: []
+            albums: [],
+			search: [],
         }
     }
 
-    componentDidMount(){
-        fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/tracks')
-        .then( response => response.json())
-        .then( data => this.setState(
-            { tracks: data.data }
-        ))
-        .then(() => {
-            fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/artists')
-            .then( response => response.json())
-            .then( data => this.setState(
-                { artists: data.data }
-            ))
-            .then(() => {
-                fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/albums')
-                .then( response => response.json())
-                .then( data => this.setState(
-                    { albums: data.data }
-                ))
-                .catch( error => console.log(error));
-            })
-            .catch( error => console.log(error));
-        })
-        .catch( error => console.log(error));
-
+	componentDidMount(){
+		this.buscarResultados();
     }
+
+	buscarResultados(busqueda = "") {
+		if (busqueda === "") {
+			fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/tracks')
+			.then( response => response.json())
+			.then( data => this.setState(
+				{ tracks: data.data }
+			))
+			.then(() => {
+				fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/artists')
+				.then( response => response.json())
+				.then( data => this.setState(
+					{ artists: data.data }
+				))
+				.then(() => {
+					fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/albums')
+					.then( response => response.json())
+					.then( data => this.setState(
+						{ albums: data.data }
+					))
+					.catch( error => console.log(error));
+				})
+				.catch( error => console.log(error));
+			})
+			.then(() => {
+				this.setState({ search: [] })
+			})
+			.catch( error => console.log(error));
+		} else {
+			fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/search?q=${busqueda}`)
+			.then( response => response.json())
+			.then( data => this.setState(
+				{ search: data.data }
+			))
+			.catch( error => console.log(error));
+		}
+	}
+
+	renderizarContenido() {
+		if (this.state.search.length > 0) {
+			return (
+				<article className="lista-songs">
+					<h1 className="title-songs">SEARCH RESULTS</h1>
+					<ul className="ul-de-songs">
+						{this.state.search.map((oneSearch, idx) => <CardTracks key = {oneSearch + idx} trackData = {oneSearch}/>)} 
+					</ul>
+				</article>
+			)
+		} else {
+			return (
+				<>
+					<article className="lista-songs">
+						<h1 className="title-songs">HOT TRACKS</h1>
+						<ul className="ul-de-songs">
+							{this.state.tracks.map((oneTrack, idx) => <CardTracks key = {oneTrack + idx} trackData = {oneTrack}/>)} 
+
+						</ul>
+					</article>
+					<article className="lista-albums">
+						<h1 className="title-albums">BEST NEW ALBUMS</h1>
+						<ul className="ul-de-albums">
+						{this.state.albums.map((oneAlbum, idx) => <CardAlbums  key = {oneAlbum + idx} albumData = {oneAlbum}/>)} 
+							
+						</ul>
+					</article>
+					<article className="lista-artist">
+						<h1 className="title-artist">FAVOURITE ARTISTS</h1>
+						<ul className="ul-de-artist">
+						{this.state.artists.map((oneArtist, idx) => <CardArtists key = {oneArtist + idx} artistData = {oneArtist}/>)}
+
+						</ul>
+					</article>
+				</>
+			)
+		}
+	}
     // traerMas(){
     //     //Traer la siguiente pagina de personajes 
     //     fetch(this.state.nextUrl)
@@ -52,33 +107,14 @@ class Home extends Component {
     // }
 
     render(){
+		// hacemos un bind para que el setState llamado desde NavBar no tire error por ser llamado desde otro componente 
         return (
-        
-        <React.Fragment>
-            <main className="main-home">
-        <article className="lista-songs">
-            <h1 className="title-songs">HOT TRACKS</h1>
-            <ul className="ul-de-songs">
-                {this.state.tracks.map((oneTrack, idx) => <CardTracks key = {oneTrack + idx} trackData = {oneTrack}/>)} 
-
-            </ul>
-        </article>
-        <article className="lista-albums">
-            <h1 className="title-albums">BEST NEW ALBUMS</h1>
-            <ul className="ul-de-albums">
-            {this.state.albums.map((oneAlbum, idx) => <CardAlbums  key = {oneAlbum + idx} albumData = {oneAlbum}/>)} 
-                
-            </ul>
-        </article>
-        <article className="lista-artist">
-            <h1 className="title-artist">FAVOURITE ARTISTS</h1>
-            <ul className="ul-de-artist">
-            {this.state.artists.map((oneArtist, idx) => <CardArtists key = {oneArtist + idx} artistData = {oneArtist}/>)}
-
-            </ul>
-        </article>
-    </main>
-        </React.Fragment>
+			<>
+				<NavBar buscarResultados={this.buscarResultados.bind(this)} />
+				<main className="main-home">
+					{this.renderizarContenido()}
+				</main>
+			</>
         )
     }
 }

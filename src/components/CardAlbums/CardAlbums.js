@@ -8,8 +8,7 @@ class CardAlbums extends Component {
         this.state = {
             valor: [],
             verMas: false
-        } //recibe por props la info que le pasa el padre (Characters)
-        console.log(props.albumData);
+        }
     }
 
     mostrarInfo (){
