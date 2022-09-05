@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import CardTracks from '../../components/CardTracks/CardTracks';
+import CardArtists from '../../components/CardArtists/CardArtists';
+import CardAlbums from '../../components/CardAlbums/CardAlbums';
 import './Home.css'
 
 
@@ -64,29 +66,14 @@ class Home extends Component {
         <article className="lista-albums">
             <h1 className="title-albums">BEST NEW ALBUMS</h1>
             <ul className="ul-de-albums">
-            {this.state.albums.map((oneAlbum, idx) => 
-            <li  key = {oneAlbum + idx}>
-            <img src={oneAlbum.cover_big} alt="Image of {oneAlbum.title} Album"/>
-            <div className="text">
-              <h5><a href="detail-album.html?id={oneAlbum.id}">{oneAlbum.title}</a></h5>
-              <p><a href="detail-artist.html?id={oneAlbum.artist.id}">- {oneAlbum.artist.name}</a></p>
-            </div>
-         </li>
-            
-            )} 
+            {this.state.albums.map((oneAlbum, idx) => <CardAlbums  key = {oneAlbum + idx} albumData = {oneAlbum}/>)} 
                 
             </ul>
         </article>
         <article className="lista-artist">
             <h1 className="title-artist">FAVOURITE ARTISTS</h1>
             <ul className="ul-de-artist">
-            {this.state.artists.map((oneArtist, idx) => 
-            <li key = {oneArtist + idx}>
-            <img src={oneArtist.picture_big} alt="Image of {oneArtist.name}"/>
-            <div className="text">
-                <h5><a href="detail-artist.html?id={oneArtist.id}">{oneArtist.name}</a></h5>
-            </div>
-        </li>)}
+            {this.state.artists.map((oneArtist, idx) => <CardArtists key = {oneArtist + idx} artistData = {oneArtist}/>)}
 
             </ul>
         </article>

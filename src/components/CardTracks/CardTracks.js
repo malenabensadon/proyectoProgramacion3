@@ -18,7 +18,7 @@ class CardTracks extends Component {
     }
     
     render(){
-        console.log(this.state.valor)
+        
         return (
             <li>
                 <img src={this.props.trackData.album.cover_big} alt="Image of {oneTrack.title} Song"/> 
