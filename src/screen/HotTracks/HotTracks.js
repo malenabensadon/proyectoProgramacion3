@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import CardTracks from '../../components/CardTracks/CardTracks';
 
 
 class HotTracks extends Component {
@@ -10,7 +11,7 @@ class HotTracks extends Component {
     }
     componentDidMount(){
     
-        fetch('https://cors-anywhere.herokuapp.com/fetch/https://api.deezer.com/chart/0/tracks')
+        fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/tracks')
 			.then( response => response.json())
 			.then( data => this.setState(
 				{ tracks: data.data }
@@ -26,7 +27,7 @@ class HotTracks extends Component {
           <article className="lista-songs">
 						<h1 className="title-songs">HOT TRACKS</h1>
 						<ul className="ul-de-songs">
- 							{this.state.tracks.map((Track, idx) => <HotTracks key = {Track + idx} trackData = {Track}/>)} 
+ 							{this.state.tracks.map((Track, idx) => <CardTracks key = {Track + idx} trackData = {Track}/>)} 
  
 						</ul>
 					</article>
