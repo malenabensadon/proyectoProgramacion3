@@ -27,6 +27,7 @@ class CardTracks extends Component {
                     <p><a href="detail-artist.html?id={oneTrack.artist.id}"> - {this.props.trackData.artist.name}</a></p>
                 </div>
                 <button onClick = {() => this.mostrarInfo()}><i className="fas fa-plus-circle"></i></button> 
+                <button><i className="fa-solid fa-heart"></i></button>
                 {
                     this.state.verMas ? 
                     <p>{this.props.trackData.title}</p>

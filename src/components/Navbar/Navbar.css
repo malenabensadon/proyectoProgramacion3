@@ -25,8 +25,6 @@
 }
  */
 
-
-/* mio*/
 /* HEADER */
 header {
     background-color: rgb(24, 24, 24);
@@ -103,7 +101,7 @@ header {
     width: 80%;
     padding: 10px;
     border: none;
-    border-bottom: solid 3px rgb(16, 135, 233);
+    border-bottom: solid 1.5px rgb(16, 135, 233);
 }
 .search button {
     font-size: 17px;
@@ -112,12 +110,12 @@ header {
     width: 10%;
     padding: 10px;
     border: none;
-    border-bottom: solid 3px rgb(16, 135, 233);
+    border-bottom: solid 1.5px rgb(16, 135, 233);
     cursor: pointer;
 }
 .search button:hover {
     background: rgba(255, 255, 255, 0.2);
-    border-bottom: solid 3px rgb(16, 135, 233);
+    border-bottom: solid 1.5px rgb(16, 135, 233);
 }
 .navegador ul {
     font-size: 20px;
@@ -132,7 +130,11 @@ header {
     border-bottom: solid 3px transparent;
 }
 #home:hover, #vermas:hover{
-    border-bottom: solid 3px rgb(16, 135, 233);
+    border-bottom: solid 1.5px rgb(16, 135, 233); 
+    /* border-bottom: solid 2px rgb(108, 108, 108); */
+}
+#my-playlist a{
+    padding: 5px;
 }
 #my-playlist{
     background-color: rgb(16, 135, 233);
