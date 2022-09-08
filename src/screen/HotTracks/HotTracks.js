@@ -7,7 +7,7 @@ class HotTracks extends Component {
         super();
         this.state = {
             tracks: [],
-            q: 20,
+            q: 1,
         }
     }
     componentDidMount(){
@@ -27,8 +27,9 @@ class HotTracks extends Component {
         fetch(this.state.tracks)
         .then( response => response.json())
         .then( data => this.setState(
-                                {//tracks: data.results(this.state.tracks)
-                                q: 30}
+                                {
+                                tracks: data.data,
+                                q: 10}
         ))
         .catch( error => console.log(error));
     }
@@ -45,8 +46,9 @@ class HotTracks extends Component {
  							{this.state.tracks.map((Track, idx) => <CardTracks key = {Track + idx} trackData = {Track}/>)} 
  
 						</ul>
+                        <button onClick={()=> this.traerMas()}> See More ...</button>
 					</article>
-                    </>
+            </>
 
 
 
