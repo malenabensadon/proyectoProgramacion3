@@ -8,8 +8,9 @@ import NavBar from '../../components/Navbar/Navbar';
 class Home extends Component {
     constructor() {
         super();
-        this.state = {
-            tracks: [],
+        this.state = 
+		{
+			tracks: [],
             artists: [],
             albums: [],
 			search: [],
@@ -25,7 +26,9 @@ class Home extends Component {
 			fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/tracks')
 			.then( response => response.json())
 			.then( data => this.setState(
-				{ tracks: data.data }
+				{ tracks: data.data,
+					moreTracks: data.data
+				}
 			))
 			.then(() => {
 				fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/artists')
@@ -95,17 +98,7 @@ class Home extends Component {
 			)
 		}
 	}
-    // traerMas(){
-    //     //Traer la siguiente pagina de personajes 
-    //     fetch(this.state.nextUrl)
-    //     .then( response => response.json())
-    //     .then( data => this.setState(
-    //                             {valor: data.results.concat(this.state.valor),
-    //                             nextUrl: data.info.next}
-    //     ))
-    //     .catch( error => console.log(error));
-    // }
-
+ 
     render(){
 		// hacemos un bind para que el setState llamado desde NavBar no tire error por ser llamado desde otro componente 
         return (

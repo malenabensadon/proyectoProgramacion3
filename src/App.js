@@ -4,6 +4,7 @@ import './App.css'
 import Favourites from "./screen/Favourites/Favourites";
 import HotTracks from "./screen/HotTracks/HotTracks";
 import Footer from "./components/Footer/Footer";
+import DetailTrack from "./screen/DetailTrack/DetailTrack";
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         </Route>
         <Route path="/favoritos" component={Favourites} />
         <Route path="/hot-tracks" component={HotTracks} />
+        <Route path="/DetailTrack/:id" component={DetailTrack} />
       </Switch>
       <Footer />
     </>

@@ -7,17 +7,32 @@ class HotTracks extends Component {
         super();
         this.state = {
             tracks: [],
+            q: 20,
         }
     }
     componentDidMount(){
     
-        fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/tracks')
+        fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/tracks?limit=${this.state.q}`)
+
+    
 			.then( response => response.json())
 			.then( data => this.setState(
 				{ tracks: data.data }
 			)).catch( error => console.log(error));
 
     }
+
+    traerMas(){
+        //Traer la siguiente pagina de personajes 
+        fetch(this.state.tracks)
+        .then( response => response.json())
+        .then( data => this.setState(
+                                {//tracks: data.results(this.state.tracks)
+                                q: 30}
+        ))
+        .catch( error => console.log(error));
+    }
+
 
     render() {
         return (
