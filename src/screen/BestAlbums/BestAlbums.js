@@ -11,7 +11,7 @@ class BestAlbums extends Component {
     }
     componentDidMount(){
     
-        fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/albumss`)
+        fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/albums`)
 
     
 			.then( response => response.json())
@@ -26,9 +26,7 @@ class BestAlbums extends Component {
         fetch(this.state.albums)
         .then( response => response.json())
         .then( data => this.setState(
-                                {
-                                albums: data.data,
-                                }
+                                { albums: data.data,}
         ))
         .catch( error => console.log(error));
     }
@@ -38,7 +36,6 @@ class BestAlbums extends Component {
         return (
             <>
             <div>Best Albums</div>
-
 
             <article className="lista-albums">
 						<h1 className="title-albums">BEST NEW ALBUMS</h1>

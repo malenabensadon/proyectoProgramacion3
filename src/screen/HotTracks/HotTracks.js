@@ -7,7 +7,7 @@ class HotTracks extends Component {
         super();
         this.state = {
             tracks: [],
-            q: 1,
+            q: 10,
         }
     }
     componentDidMount(){
