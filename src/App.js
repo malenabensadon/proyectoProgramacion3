@@ -5,6 +5,8 @@ import Favourites from "./screen/Favourites/Favourites";
 import HotTracks from "./screen/HotTracks/HotTracks";
 import Footer from "./components/Footer/Footer";
 import DetailTrack from "./screen/DetailTrack/DetailTrack";
+import FavouriteArtists from "./screen/FavouriteArtists/FavouriteArtists";
+import BestAlbums from "./screen/BestAlbums/BestAlbums";
 
 
 function App() {
@@ -16,6 +18,8 @@ function App() {
         </Route>
         <Route path="/favoritos" component={Favourites} />
         <Route path="/hot-tracks" component={HotTracks} />
+        <Route path="/favourite-artists" component={FavouriteArtists} />
+        <Route path="/best-albums" component={BestAlbums} />
         <Route path="/DetailTrack/:id" component={DetailTrack} />
       </Switch>
       <Footer />
