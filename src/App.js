@@ -7,6 +7,7 @@ import Footer from "./components/Footer/Footer";
 import DetailTrack from "./screen/DetailTrack/DetailTrack";
 import FavouriteArtists from "./screen/FavouriteArtists/FavouriteArtists";
 import BestAlbums from "./screen/BestAlbums/BestAlbums";
+import NotFound from "./screen/NotFound/NotFound";
 
 
 function App() {
@@ -21,6 +22,8 @@ function App() {
         <Route path="/favourite-artists" component={FavouriteArtists} />
         <Route path="/best-albums" component={BestAlbums} />
         <Route path="/DetailTrack/:id" component={DetailTrack} />
+        <Route path="" component={NotFound} />
+
       </Switch>
       <Footer />
     </>
