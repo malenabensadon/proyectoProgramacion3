@@ -10,11 +10,13 @@ import DetailArtist from "./screen/DetailArtist/DetailArtist";
 import FavouriteArtists from "./screen/FavouriteArtists/FavouriteArtists";
 import BestAlbums from "./screen/BestAlbums/BestAlbums";
 import NotFound from "./screen/NotFound/NotFound";
+// import Header from "./components/Header/Header"
 
 
 function App() {
   return (
     <>
+    {/* <Header/> */}
       <Switch>
         <Route exact path="/">
           <Home />

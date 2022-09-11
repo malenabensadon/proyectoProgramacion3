@@ -25,7 +25,6 @@ class FavouriteArtists extends Component {
     }
 
     traerMas(){
-        //Traer la siguiente pagina de personajes 
         fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/artists?limit=${this.state.q}`) //no se si esta bien volver a copiar el endpoint
         .then( response => response.json())
         .then( data => this.setState(
