@@ -60,8 +60,6 @@ class CardTracks extends Component {
                 fav: 'Remove from favourites'
             })
         }
-
-
         let favoritos = JSON.stringify(favourites);
         localStorage.setItem('favoritos', favoritos);
 
