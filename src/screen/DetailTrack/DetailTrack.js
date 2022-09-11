@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import DetailTrackCard from '../../components/DetailTrackCard/DetailTrackCard';
 
 
 class DetailTrack extends Component {
@@ -13,10 +14,12 @@ class DetailTrack extends Component {
     }
 
     componentDidMount(){
+        let cancion = []
         fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/track/${this.props.match.params.id}`)
         .then( response => response.json())
+        .then( data => cancion.push(data))
         .then( data => this.setState(
-                                { detail: data.title }
+                                { detail: cancion }
         ))
         .catch( error => console.log(error));
         }
@@ -24,11 +27,12 @@ class DetailTrack extends Component {
  
     render(){
         console.log(this.props.match.params.id)
-        console.log(this.props)
+        console.log(this.props.detail)
+        console.log(this.state.detail)
 		// hacemos un bind para que el setState llamado desde NavBar no tire error por ser llamado desde otro componente 
         return (
 			<>
-				<p>Hola</p>
+                {this.state.detail.map((oneDetail, idx) => <DetailTrackCard key={oneDetail + idx} trackData={oneDetail}/>)}
                 
 			</>
         )
