@@ -75,7 +75,7 @@ class CardTracks extends Component {
             <li>
                  <img src={this.props.trackData.album.cover_big} alt="Image of {oneTrack.title} Song"/>  
                 <div className="text"> 
-                    <h5><Link to={`/DetailTrack/${this.props.trackData.id}`}>  {this.props.trackData.title}</Link> </h5>
+                    <h5><Link to={`/DetailTrack/id/${this.props.trackData.id}`}>  {this.props.trackData.title}</Link> </h5>
                   {/*   <p><Link to={`/DetailArtist/${this.props.artistData.id}`}> </Link></p> */}
                 </div>
                 <button onClick = {() => this.mostrarInfo()}><i className="fas fa-plus-circle"></i></button> 

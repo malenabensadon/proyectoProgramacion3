@@ -21,7 +21,7 @@ function App() {
         <Route path="/hot-tracks" component={HotTracks} />
         <Route path="/favourite-artists" component={FavouriteArtists} />
         <Route path="/best-albums" component={BestAlbums} />
-        <Route path="/DetailTrack/:id" component={DetailTrack} />
+        <Route path="/DetailTrack/id/:id" component={DetailTrack} />
         <Route path="" component={NotFound} />
 
       </Switch>
