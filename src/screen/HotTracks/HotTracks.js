@@ -7,14 +7,13 @@ class HotTracks extends Component {
         super();
         this.state = {
             tracks: [],
-            q: 20,
+            q: 10,
         }
     }
     componentDidMount(){
     
         fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/tracks?limit=${this.state.q}`)
 
-    
 			.then( response => response.json())
 			.then( data => this.setState(
 				{ tracks: data.data }

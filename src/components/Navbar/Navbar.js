@@ -22,7 +22,7 @@ class NavBar extends Component {
     render() {
         return (
             <header>
-                 <div className='container'>
+                {/* <div className='container'>
                 <div className='search-container'>
                     <form>
                         <input type="text" className='search-input' onChange={(event) => this.buscarResultado(event)} value={this.state.busqueda} />
@@ -35,9 +35,9 @@ class NavBar extends Component {
                     <Link to='/best-albums'>Best Albums</Link>
                     <Link to='/favourite-artists'>Favourite Artists</Link>
                 </div>
-            </div> 
+            </div>  */}
             
-            {/* <section className="logo">
+             <section className="logo">
                 <div className="imagenes-logo">
                     <img src="img/anytime-slogan.PNG" alt="Music Anytime" className="slogan"/>
                     <img src="img/logo3.PNG" alt="Logo Planet Music"/>
@@ -63,8 +63,8 @@ class NavBar extends Component {
 
                     <li id="my-playlist"> <Link to='/favoritos'>Favourites</Link></li>
                     
-                </ul> */}
-            {/* </nav> */}
+                </ul> 
+             </nav> 
         </header>
         )
     }
