@@ -18,7 +18,8 @@ class DetailTrackCard extends Component {
             
             <main class="main-detail-track">
         <div class="banner-detail-track">
-            
+            <img class="banner-track" src={this.props.trackData.album.cover_xl} />
+            <img class="banner-track-responsive" src={this.props.trackData.album.cover_xl} />
         </div>
         <article class="track-detail">
             <img src={this.props.trackData.album.cover_big} alt="" class="img-dua"/>
@@ -26,8 +27,8 @@ class DetailTrackCard extends Component {
                 <div class="title-track info-track">
                     <p class="add-playlist">Add to Playlist</p>
                     <h1>{this.props.trackData.title}</h1>
-                    <p class="album-detail-track"><Link to={`/detailAlbum`}>{this.props.trackData.album.title}</Link></p>
-                    <h3><Link to={`/detailArtist`}>{this.props.trackData.artist.name}</Link></h3>
+                    <p class="album-detail-track"><Link to={`/detailAlbum/id/${this.props.trackData.album.id}`}>{this.props.trackData.album.title}</Link></p>
+                    <h3><Link to={`/detailArtist/id/${this.props.trackData.artist.id}`}>{this.props.trackData.artist.name}</Link></h3>
                 </div>
             </section>
             <section class="player">

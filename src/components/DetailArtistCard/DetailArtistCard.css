@@ -1,0 +1,152 @@
+/* DETAIL-ARTIST.HTML */
+.main-detail-artist{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.banner-detail-artist{
+    height: 250px;
+    width: 100%;
+    overflow: hidden;
+    
+}
+.banner-detail-artist::before{
+    position: absolute;
+    height: 250px;
+    background: linear-gradient(to top, rgb(3, 3, 3, 0.99), rgba(0, 0, 0, 0.18));
+    content: "";
+    width: 100%;
+}
+
+.banner-artist-responsive{
+    display: none;
+}
+.banner-artist {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.artist-detail {
+    background-color: rgba(255, 255, 255, 0.2);
+    width: 75%;
+    border-radius: 10px;
+    margin-top: 60px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+.banner-track-responsive, .title-artist-responsive, .img-miley-responsive{
+    display: none;
+}
+.img-miley {
+    width: 600px;
+    border-radius: 30px;
+    padding: 20px;
+    height: 600px;
+
+}
+.description-miley {
+    width: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.description-miley h1{
+    width: 100%;
+    font-size: 70px;
+    margin-top: 50px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+.description-miley ul{
+    width: 100%;
+    margin-bottom: 50px;
+}
+.description-miley h6{
+    width: 100%;
+    border-bottom: solid 2px rgba(255, 255, 255, 0.1);
+    font-size: 35px;
+    margin: 0px;
+}
+.description-miley li{
+    font-size: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 10px; 
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.description-miley li:hover{
+    background-color: rgba(255, 255, 255, 0.15);
+}
+.description-miley li a:hover{
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: underline;
+}
+.description-album{
+   width: 100%;
+   padding: 20px;
+}
+.artist-albums{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.artist-albums h6{
+    font-size: 35px;
+    width: 100%;
+    border-bottom: solid 2px rgba(255, 255, 255, 0.1);
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.artist-albums li{
+    width: 18%;
+    flex-direction: row;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px; 
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+}
+.artist-albums li:hover{
+    background-color: rgba(255, 255, 255, 0.15);
+}
+.contenedor-albumes-da{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 70px;
+}
+
+.artist-albums li h4{
+    justify-content: center;
+    margin: 0px;
+    padding-left: 7px;
+    padding-right: 7px;
+   
+}
+.artist-albums li h4:hover{
+    text-decoration: underline;
+}
+.artist-albums li img{
+    width: 100%;
+    border-radius: 10px;
+}

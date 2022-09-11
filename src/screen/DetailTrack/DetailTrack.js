@@ -26,10 +26,9 @@ class DetailTrack extends Component {
 
  
     render(){
-        console.log(this.props.match.params.id)
-        console.log(this.props.detail)
-        console.log(this.state.detail)
-		// hacemos un bind para que el setState llamado desde NavBar no tire error por ser llamado desde otro componente 
+        // console.log(this.props.match.params.id)
+        // console.log(this.props.detail)
+        // console.log(this.state.detail)
         return (
 			<>
                 {this.state.detail.map((oneDetail, idx) => <DetailTrackCard key={oneDetail + idx} trackData={oneDetail}/>)}
