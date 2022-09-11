@@ -7,27 +7,31 @@ class FavouriteArtists extends Component {
         super();
         this.state = {
             artists: [],
+            q: []
         }
     }
     componentDidMount(){
     
-        fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/artists`)
+        fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/artists?limit=${this.state.q}`)
 
     
 			.then( response => response.json())
 			.then( data => this.setState(
-				{ artists: data.data }
+				{ artists: data.data,
+                    q: 10
+                }
 			)).catch( error => console.log(error));
 
     }
 
     traerMas(){
         //Traer la siguiente pagina de personajes 
-        fetch(this.state.artists)
+        fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/artists?limit=${this.state.q}`) //no se si esta bien volver a copiar el endpoint
         .then( response => response.json())
         .then( data => this.setState(
                                 {
                                 artists: data.data,
+                                q: this.state.q + 10
                                 }
         ))
         .catch( error => console.log(error));

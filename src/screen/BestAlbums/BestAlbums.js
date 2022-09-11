@@ -7,26 +7,31 @@ class BestAlbums extends Component {
         super();
         this.state = {
             albums: [],
+            q: []
         }
     }
     componentDidMount(){
     
-        fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/albums`)
+        fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/albums?limit=${this.state.q}`)
 
     
 			.then( response => response.json())
 			.then( data => this.setState(
-				{ albums: data.data }
+				{ albums: data.data,
+                    q: 10
+                
+                }
 			)).catch( error => console.log(error));
 
     }
 
     traerMas(){
         //Traer la siguiente pagina de personajes 
-        fetch(this.state.albums)
+        fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/albums?limit=${this.state.q}`)
         .then( response => response.json())
         .then( data => this.setState(
-                                { albums: data.data,}
+                                { albums: data.data,
+                                    q: this.state.q + 10}
         ))
         .catch( error => console.log(error));
     }

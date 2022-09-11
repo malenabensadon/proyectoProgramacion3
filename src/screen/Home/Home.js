@@ -4,6 +4,7 @@ import CardArtists from '../../components/CardArtists/CardArtists';
 import CardAlbums from '../../components/CardAlbums/CardAlbums';
 import './Home.css'
 import NavBar from '../../components/Navbar/Navbar';
+import { Link } from 'react-router-dom';
 
 class Home extends Component {
     constructor() {
@@ -79,6 +80,7 @@ class Home extends Component {
 							{this.state.tracks.map((oneTrack, idx) => <CardTracks key = {oneTrack + idx} trackData = {oneTrack}/>)} 
 
 						</ul>
+						<p><Link to="/hot-tracks">See All ...</Link></p>
 					</article>
 					<article className="lista-albums">
 						<h1 className="title-albums">BEST NEW ALBUMS</h1>
@@ -86,6 +88,7 @@ class Home extends Component {
 						{this.state.albums.map((oneAlbum, idx) => <CardAlbums  key = {oneAlbum + idx} albumData = {oneAlbum}/>)} 
 							
 						</ul>
+						<p><Link to="/best-albums">See All ...</Link></p>
 					</article>
 					<article className="lista-artist">
 						<h1 className="title-artist">FAVOURITE ARTISTS</h1>
@@ -93,6 +96,7 @@ class Home extends Component {
 						{this.state.artists.map((oneArtist, idx) => <CardArtists key = {oneArtist + idx} artistData = {oneArtist}/>)}
 
 						</ul>
+						<p><Link to="/favourite-artists">See All ...</Link></p>
 					</article>
 				</>
 			)
