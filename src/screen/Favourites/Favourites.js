@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import CardTracks from "../../components/CardTracks/CardTracks"
+import FavouriteCard from "../../components/FavouriteCard/FavouriteCard"
 
 
 
@@ -43,10 +43,16 @@ class Favourites extends Component{
             console.log(this.state.tracks)
         return(
             <React.Fragment>
-                <h2 className="Titulo">My Favourite Tracks</h2>
-                 <section className="card-container-favs">
-                 {this.state.tracks.map((oneTrack, idx) => <CardTracks key={oneTrack + idx} trackData={oneTrack} />)} 
+                 <main class="main-playlist">
+                <h1 className="Titulo">My Favourite Tracks</h1>
+                 <section className="playlist">
+                 <ul class="lista-playlist">
+                 {this.state.tracks.map((oneTrack, idx) => <FavouriteCard key={oneTrack + idx} trackData={oneTrack} />)} 
+                 </ul>
                  </section>
+                 </main>
+
+    
               
             </React.Fragment>
         )
