@@ -17,3 +17,14 @@ footer {
 .logo-copy {
     width: 5%;
 }
+
+@media (max-width: 420px){
+ /*FOOTER*/
+ .integrantes{
+    font-size: 12px;
+}
+.logo-copy{
+    width: 20%;
+}
+
+}

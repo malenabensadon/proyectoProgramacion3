@@ -111,3 +111,32 @@ button:hover{
 .fa-heart{
     color: rgb(52, 205, 52);
 }
+
+@media (max-width: 420px){
+/*INDEX.HTML*/
+.main-home{
+    flex-direction: column;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.lista-songs, .lista-albums, .lista-artist{
+    width: 85%;
+    margin-bottom: 30px;
+}
+.title-songs, .title-albums, .title-artist{
+    height: 150px;
+    font-size: 150%;
+}
+.ul-de-songs li, .ul-de-albums li, .ul-de-artist{
+    margin-bottom: 0px;
+}
+.ul-de-songs li img, .ul-de-albums li img, .ul-de-artist li img{
+    width: 15%;
+}
+.text h5{
+    font-size: 15px;
+}
+.text p{
+    font-size: 13px;
+}
+}

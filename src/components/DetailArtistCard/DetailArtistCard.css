@@ -150,3 +150,86 @@
     width: 100%;
     border-radius: 10px;
 }
+
+@media (max-width: 420px){
+ /*DETAIL-ARTIST.HTML*/
+ .img-miley, .description-miley h1{
+    display: none;
+}
+.banner-detail-artist{
+    height: 150px;
+}
+.banner-detail-artist::before{
+    height: 150px;
+}
+.banner-artist{
+    display: none;
+}
+.banner-artist-responsive{
+    display: flex;
+    width: 100%;
+}
+.title-artist-responsive, .img-miley-responsive{
+    display: flex;
+}
+.artist-detail {
+    width: 85%;
+}
+.title-artist-responsive{
+    font-size: 40px;
+    width: 100%;
+    justify-content: center;
+}
+.img-miley-responsive{
+    display: flex;
+    width: 100%;
+    padding: 10px;
+    border-radius: 30px;
+}
+.description-miley{
+    width: 100%;
+}
+.description-miley ul{
+    margin-bottom: 30px;
+}.description-miley h6{
+    font-size: 25px;
+    padding-left: 10px;
+}
+.description-miley li{
+    font-size: 15px;
+}
+.popular-songs li a{
+    width: 100%;
+}
+.description-album{
+    padding-top: 0px;
+}
+.artist-albums{
+    flex-direction: column;
+}
+.artist-albums h6{
+    margin-top: 0px;
+}
+.artist-albums li{
+    width: 100%;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: 5px;
+}
+.artist-albums li a{
+    width: 30%;
+}
+.artist-albums li img{
+    width: 100%;
+    padding: 5px;
+}
+.contenedor-albumes-da{
+    width: 65%;
+    justify-content: flex-start;
+}
+
+.artist-albums{
+    font-size: 10px;
+    
+}
+}

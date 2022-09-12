@@ -67,3 +67,25 @@
     color: rgb(73, 165, 240);
 }
 
+@media (max-width: 420px){
+ /*PLAYLIST.HTML*/
+ .playlist li{
+    width: 100%;
+    justify-content: initial;
+    padding: 10px;
+}
+.playlist li img{
+    width: 30%;
+}
+.playlist li h5, .playlist li p{
+    width: initial;
+    font-size: 20px;
+}
+.playlist li div{
+    display: flex;
+flex-wrap: wrap;
+flex-direction: column;
+width: 70%;
+align-items: flex-start;
+}
+}

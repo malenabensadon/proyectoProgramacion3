@@ -115,3 +115,71 @@
     width: 100%;
     font-weight: 600;
 }
+@media (max-width: 420px){
+ /*DETAIL-TRACK.HTML*/
+ .track-detail {
+    width: 85%;
+}
+.banner-detail-track{
+    height: 150px;
+}
+.banner-detail-track::before{
+    height: 150px;
+}
+.banner-track{
+    display: none;
+}
+.banner-track-responsive{
+    display: flex;
+    width: 100%;
+}
+.img-dua{
+    padding: 20px;
+    margin: 0px;
+    border-radius: 30px;
+    width: 335px;
+    height: 335px;
+}
+.description-track{
+    width: 100%;
+    margin: 0px;
+}
+.info-track .add-playlist{
+    width: 40%;
+    width: 100%;
+    font-size: 15px;
+    margin: 0px;
+    margin-bottom: 10px;
+}
+.info-track{
+    padding: 10px;
+}
+
+.info-track h1{
+    width: 100%;
+    font-size: 35px;
+    margin-top: 10px;
+}
+.info-track h3{
+    font-size: 25px;
+}
+
+.player p{
+    width: 90%;
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    box-sizing: initial;
+    
+    
+}
+.player-deezer{
+    width: 100%;
+}
+.player-deezer iframe{
+    width: 100%;
+    height: 80px;
+}
+
+}

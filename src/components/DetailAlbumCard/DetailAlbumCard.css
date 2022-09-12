@@ -84,3 +84,89 @@
 .genres-album:hover{
     background-color: rgba(20, 20, 20, 0.2);
     cursor: pointer;}
+
+
+    @media (max-width: 420px){
+
+        /*DETAIL-ALBUM*/
+        .banner-detail-album{
+           height: 150px;
+       }
+       .banner-detail-album::before{
+           height: 150px;
+       }
+       .banner-album{
+           display: none;
+       }
+       .banner-album-responsive{
+           display: flex;
+           width: 100%;
+       }
+       .justice-title{
+           font-size: 15px;
+           width: initial;
+           margin: 0%;
+           margin-top: 20px;
+           padding: 20px
+       }
+       
+       .main-detail-album{
+           display: flex;
+           flex-wrap: wrap;
+           justify-content: center;}
+       
+       
+       .fotoalbum{
+       width: 230px;
+       height:auto
+       }
+       
+       .article-main-album{
+           width:85%;
+           flex-wrap: wrap;
+           
+       }
+       
+       .section1-album{
+           margin: 20px;
+           margin-bottom: 20px;
+           font-size: 30px;
+       }
+       
+       .genres-album{
+           font-size: 25px;
+           align-items: center;
+       }
+       
+       .detalles-album{
+           margin-top: 0px;
+           font-size: 30px;
+           text-decoration: underline;
+       
+       }
+       .section2-album{
+           margin: 10px;
+           font-size: 20px;
+           width: 100%;
+       }
+       
+       .section1-album ul{
+           display: flex;
+           flex-wrap: wrap;
+           justify-content: center;
+       }
+       
+       .section2-album li{
+           margin: 10px;
+           font-size: 20px;
+           width: 100%;
+       
+       }
+       .section2-album ul{
+           display: flex;
+           flex-wrap: wrap;
+       }
+       
+        
+       }
+           
