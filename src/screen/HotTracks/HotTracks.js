@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import CardTracks from '../../components/CardTracks/CardTracks';
+import Header from '../../components/Header/Header'
 
 
 class HotTracks extends Component {
@@ -54,8 +55,12 @@ class HotTracks extends Component {
 
     render() {
         return (
-            <>
-            <div>Hot Tracks</div>
+            
+             <>
+
+
+<Header/>
+            
             <article className="lista-songs">
                 <h1 className="title-songs">HOT TRACKS</h1>
                 <form className="search" onSubmit={this.evitarSubmit}>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DetailArtistCard from '../../components/DetailArtistCard/DetailArtistCard';
+import Header from '../../components/Header/Header'
 
 
 class DetailArtist extends Component {
@@ -31,6 +32,7 @@ class DetailArtist extends Component {
         console.log(this.state.detail)
         return (
 			<>
+            <Header/>
                 {this.state.detail.map((oneDetail, idx) => <DetailArtistCard key={oneDetail + idx} artistData={oneDetail}/>)}
                 
 			</>

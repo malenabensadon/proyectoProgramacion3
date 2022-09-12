@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import CardAlbums from '../../components/CardAlbums/CardAlbums';
+import Header from '../../components/Header/Header'
 
 
 class BestAlbums extends Component {
@@ -53,8 +54,13 @@ class BestAlbums extends Component {
 
     render() {
         return (
+
             <>
-            <div>Best Albums</div>
+
+
+            <Header/>
+
+          
 
             <article className="lista-albums">
 						<h1 className="title-albums">BEST NEW ALBUMS</h1>

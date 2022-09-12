@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css'
 
@@ -9,9 +9,9 @@ function Header() {
             
              <section className="logo">
                 <div className="imagenes-logo">
-                    <img src="img/anytime-slogan.PNG" alt="Music Anytime" className="slogan"/>
-                    <img src="img/logo3.PNG" alt="Logo Planet Music"/>
-                    <img src="img/anywhere-slogan.PNG" alt="Music Anywhere" className="slogan"/>
+                    <img src="/img/anytime-slogan.PNG" alt="Music Anytime" className="slogan"/>
+                    <img src="/img/logo3.PNG" alt="Logo Planet Music"/>
+                    <img src="/img/anywhere-slogan.PNG" alt="Music Anywhere" className="slogan"/>
                 </div>
                 <div className="alerta">
                     <p className="probando1">The field can't be empty</p>
@@ -19,7 +19,7 @@ function Header() {
                 </div>  
             </section>
             <nav className="navegador">
-                <img src="img/logo3.PNG" alt="Logo Planet Music"/>
+                <img src="/img/logo3.PNG" alt="Logo Planet Music"/>
                 <form className="search">
                     {/* <input type="text" name="search" placeholder="Search..." onChange={(event) => this.buscarResultado(event)} value={this.state.busqueda} />
                     <button type="submit" onClick={(event) => this.buscarResultado(event)} value={this.state.busqueda}><i className="fa fa-search"></i></button>

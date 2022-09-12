@@ -72,16 +72,17 @@ class CardTracks extends Component {
     render(){
         
         return (
+            
+            
             <li>
                  <img src={this.props.trackData.album.cover_big} alt="Image of {oneTrack.title} Song"/>  
                 <div className="text"> 
                     <h5><Link to={`/DetailTrack/id/${this.props.trackData.id}`}>  {this.props.trackData.title}</Link> </h5>
                     <p><Link to={`/DetailArtist/id/${this.props.trackData.artist.id}`}> {this.props.trackData.artist.name}</Link></p>
                 </div>
-                <button onClick = {() => this.mostrarInfo()}><i className="fas fa-plus-circle"></i></button> 
                 {
                     this.state.fav ? 
-                    <>Tachito</>
+                    <> <i className="fas fa-trash" onClick={()=>this.addFav(this.props.trackData.id)}></i></>
                     :
                     <button><i className="fa-solid fa-heart" onClick={()=>this.addFav(this.props.trackData.id)}></i></button> 
 
@@ -93,7 +94,10 @@ class CardTracks extends Component {
                     <></>
                 
                 }
+                <button onClick = {() => this.mostrarInfo()}><i className="fas fa-plus-circle"></i></button> 
+               
             </li>
+            
 
 
         )

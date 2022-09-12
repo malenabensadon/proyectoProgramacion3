@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import DetailAlbumCard from '../../components/DetailAlbumCard/DetailAlbumCard';
-
+import Header from '../../components/Header/Header'
 
 class DetailAlbum extends Component {
     constructor(props) {
@@ -24,11 +24,14 @@ class DetailAlbum extends Component {
 
  
     render(){
+       
         console.log(this.props.match.params.id)
         console.log(this.props.detail)
         console.log(this.state.detail)
         return (
+            
 			<>
+           <Header/>
                 {this.state.detail.map((oneDetail, idx) => <DetailAlbumCard key={oneDetail + idx} albumData={oneDetail}/>)}
                 
 			</>

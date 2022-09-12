@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import FavouriteCard from "../../components/FavouriteCard/FavouriteCard"
+import Header from '../../components/Header/Header'
 
 
 
@@ -47,7 +48,9 @@ class Favourites extends Component{
 
     render(){
         return(
+
             <React.Fragment>
+                <Header/>
                 <main className="main-playlist">
                 <h1 className="Titulo">My Favourite Tracks</h1>
                 <section className="playlist">

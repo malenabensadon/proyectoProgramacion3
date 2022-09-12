@@ -12,11 +12,11 @@ class CardArtists extends Component {
         }
     }
 
-    mostrarInfo (){
-        this.setState({
-            verMas: !this.state.verMas
-        })
-    }
+    // mostrarInfo (){
+    //     this.setState({
+    //         verMas: !this.state.verMas
+    //     })
+    // }
     
     render(){
         
@@ -26,14 +26,14 @@ class CardArtists extends Component {
             <div className="text">
                 <h5><Link to={`/DetailArtist/id/${this.props.artistData.id}`}>{this.props.artistData.name}</Link> </h5>
             </div>
-                <button onClick = {() => this.mostrarInfo()}><i className="fas fa-plus-circle"></i></button> 
+                {/* <button onClick = {() => this.mostrarInfo()}><i className="fas fa-plus-circle"></i></button> 
                 {
                     this.state.verMas ? 
                     <p>{this.props.artistData.name}</p>
                     :
                     <></>
                 
-                }
+                } */}
             </li>
 
 

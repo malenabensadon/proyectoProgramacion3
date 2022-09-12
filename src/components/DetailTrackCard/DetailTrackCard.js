@@ -6,11 +6,58 @@ class DetailTrackCard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            
+            fav: false,
         } 
     }
 
+    componentDidMount(){
+        let favourites = [];
+        let Storage = localStorage.getItem('favourites')
+
+        if(Storage !== null){
+            let favoritos = JSON.parse(Storage);
+            favourites = favoritos
+        }
+
+        if(favourites.includes(this.props.trackData.id)){
+            this.setState({
+                fav: true
+            })
+        }
+
     
+    }
+
+    addFav(id){
+        let favourites = [];
+        let Storage = localStorage.getItem('favourites')
+
+        if(Storage !== null){
+            let favoritos = JSON.parse(Storage);
+            favourites = favoritos
+        }
+
+        if(favourites.includes(id)){ 
+            favourites = favourites.filter(unId => unId !== id);
+           
+            this.setState({
+                fav: false
+            })
+        } else {
+            favourites.push(id);
+      
+            this.setState({
+                fav: true
+            })
+        }
+        let favoritos = JSON.stringify(favourites);
+        localStorage.setItem('favourites', favoritos);
+
+        console.log(localStorage);
+
+    }
+
+
     render(){
         
         return (
@@ -25,7 +72,20 @@ class DetailTrackCard extends Component {
             <img src={this.props.trackData.album.cover_big} alt="" className="img-dua"/>
             <section className="description-track">
                 <div className="title-track info-track">
-                    <p className="add-playlist"> Add to Favourites </p>
+                {
+                    this.state.fav ? 
+                 <i className="fas fa-trash" onClick={()=>this.addFav(this.props.trackData.id)}></i>
+                    :
+                    <button><i className="fa-solid fa-heart" onClick={()=>this.addFav(this.props.trackData.id)}></i></button> 
+
+                }
+                {
+                    this.state.verMas ? 
+                    <p>{this.props.trackData.title}</p>
+                    :
+                    <></>
+                
+                }
                     <h1>{this.props.trackData.title}</h1>
                     <p className="album-detail-track"><Link to={`/detailAlbum/id/${this.props.trackData.album.id}`}>{this.props.trackData.album.title}</Link></p>
                     <h3><Link to={`/detailArtist/id/${this.props.trackData.artist.id}`}>{this.props.trackData.artist.name}</Link></h3>

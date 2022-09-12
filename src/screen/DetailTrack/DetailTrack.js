@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DetailTrackCard from '../../components/DetailTrackCard/DetailTrackCard';
+import Header from '../../components/Header/Header'
 
 
 class DetailTrack extends Component {
@@ -9,7 +10,8 @@ class DetailTrack extends Component {
 		{
 			detail: [],
             artists: [],
-            albums: []
+            albums: [],
+            
         }
     }
 
@@ -24,6 +26,8 @@ class DetailTrack extends Component {
         .catch( error => console.log(error));
         }
 
+        
+
  
     render(){
         // console.log(this.props.match.params.id)
@@ -31,6 +35,7 @@ class DetailTrack extends Component {
         // console.log(this.state.detail)
         return (
 			<>
+            <Header/>
                 {this.state.detail.map((oneDetail, idx) => <DetailTrackCard key={oneDetail + idx} trackData={oneDetail}/>)}
                 
 			</>
