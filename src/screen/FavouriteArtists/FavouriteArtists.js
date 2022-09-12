@@ -11,6 +11,7 @@ class FavouriteArtists extends Component {
             q: [],
             filteredArtists: [],
             filtro: "",
+            isLoading: true, 
         }
     }
     componentDidMount(){
@@ -21,19 +22,22 @@ class FavouriteArtists extends Component {
 			.then( response => response.json())
 			.then( data => this.setState(
 				{ artists: data.data,
-                    q: 10
+                    q: 10, 
+                    isLoading: false, 
                 }
 			)).catch( error => console.log(error));
 
     }
 
     traerMas(){
+        this.setState({ isLoading: true })
         fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/artists?limit=${this.state.q}`) //no se si esta bien volver a copiar el endpoint
         .then( response => response.json())
         .then( data => this.setState(
                                 {
                                 artists: data.data,
-                                q: this.state.q + 10
+                                q: this.state.q + 10, 
+                                isLoading: false,
                                 }
         ))
         .catch( error => console.log(error));
@@ -50,6 +54,13 @@ class FavouriteArtists extends Component {
         } else {
             this.setState({ filteredArtists: [], filtro: event.target.value})
         }
+    }
+    renderizarContenido() {
+		if (this.state.isLoading === true) {
+			return (
+				<div>Cargando...</div>
+			)
+		}
     }
 
     render() {

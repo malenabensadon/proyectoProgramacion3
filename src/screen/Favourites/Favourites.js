@@ -10,6 +10,7 @@ class Favourites extends Component{
         super();
         this.state = {
             tracks: [],
+            isLoading: true, 
         }
     }
 
@@ -46,6 +47,14 @@ class Favourites extends Component{
         });
     };
 
+    renderizarContenido() {
+		if (this.state.isLoading === true) {
+			return (
+				<div>Cargando...</div>
+			)
+		}
+    }
+    
     render(){
         return(
 
