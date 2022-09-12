@@ -6,16 +6,23 @@ class DetailArtistCard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            topSongs: []
+            topSongs: [],
+            topAlbums: [],
+            q: 5
         } 
     }
 
     componentDidMount(){
-        let artistSong = []
         fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/artist/${this.props.artistData.id}/top`)
         .then( response => response.json())
         .then( data => this.setState(
                                 { topSongs: data.data}
+        ))
+        .catch( error => console.log(error));
+        fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/artist/${this.props.artistData.id}/albums?limit=${this.state.q}`)
+        .then( response => response.json())
+        .then( data => this.setState(
+                                { topAlbums: data.data}
         ))
         .catch( error => console.log(error));
         }
@@ -37,14 +44,23 @@ class DetailArtistCard extends Component {
                 <h1>{this.props.artistData.name}</h1>
                 <ul className="popular-songs">
                     <h6>Popular Songs</h6>
-                    {/* {topSongs.map(onePopularSong => <li><Link to={`/`}>{onePopularSong.name}</Link></li>)} */}
-
+                    {this.state.topSongs.map(onePopularSong => <li><Link to={`/DetailTrack/id/${onePopularSong.id}`}>{onePopularSong.title}</Link></li>)} 
+                   
                 </ul>
             </section>
             <section className="description-album">
                 <ul className="artist-albums">
                     <h6>Albums </h6>
-                    
+                    {this.state.topAlbums.map(onePopularAlbum => 
+                    <li>
+                         <Link to={`/DetailAlbum/id/${onePopularAlbum.id}`}>
+                            <img src={onePopularAlbum.cover_big} alt="Image of ${arrayInfo[i].title} Album"/>
+                        </Link>
+                         <div class="contenedor-albumes-da">
+                            <h4><Link to={`/DetailAlbum/id/${onePopularAlbum.id}`}>{onePopularAlbum.title} </Link></h4>
+                         </div>
+                       </li>
+                       )} 
                 </ul>
             </section>
         </article>

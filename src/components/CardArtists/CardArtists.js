@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import '../../screen/Home/Home.css'
 
 
@@ -23,7 +24,7 @@ class CardArtists extends Component {
             <li>
                 <img src={this.props.artistData.picture_big} alt="Image of {oneArtist.name}"/>
             <div className="text">
-                <h5><a href="detail-artist.html?id={oneArtist.id}"> {this.props.artistData.name}</a></h5>
+                <h5><Link to={`/DetailArtist/id/${this.props.artistData.id}`}>{this.props.artistData.name}</Link> </h5>
             </div>
                 <button onClick = {() => this.mostrarInfo()}><i className="fas fa-plus-circle"></i></button> 
                 {
