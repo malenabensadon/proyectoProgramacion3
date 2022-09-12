@@ -15,6 +15,7 @@ class Home extends Component {
             artists: [],
             albums: [],
 			search: [],
+			isLoading: true,
         }
     }
 
@@ -41,7 +42,7 @@ class Home extends Component {
 					fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/albums')
 					.then( response => response.json())
 					.then( data => this.setState(
-						{ albums: data.data }
+						{ albums: data.data, isLoading: false }
 					))
 					.catch( error => console.log(error));
 				})
@@ -52,16 +53,22 @@ class Home extends Component {
 			})
 			.catch( error => console.log(error));
 		} else {
+			this.setState({ isLoading: true })
 			fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/search?q=${busqueda}`)
 			.then( response => response.json())
 			.then( data => this.setState(
-				{ search: data.data }
+				{ search: data.data, isLoading: false }
 			))
 			.catch( error => console.log(error));
 		}
 	}
 
 	renderizarContenido() {
+		if (this.state.isLoading === true) {
+			return (
+				<div>Cargando...</div>
+			)
+		}
 		if (this.state.search.length > 0) {
 			return (
 				<article className="lista-songs">

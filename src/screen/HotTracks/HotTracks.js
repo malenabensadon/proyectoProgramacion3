@@ -8,6 +8,8 @@ class HotTracks extends Component {
         this.state = {
             tracks: [],
             q: [],
+            filteredTracks: [],
+            filtro: "",
         }
     }
     componentDidMount(){
@@ -36,25 +38,39 @@ class HotTracks extends Component {
         .catch( error => console.log(error));
     }
 
+    evitarSubmit(event) {
+        event.preventDefault();
+    }
+
+    filtrar(event) {
+        if (event.target.value !== "") {
+            const resultadoFiltrado = this.state.tracks.filter(track => track.title.toLowerCase().startsWith(event.target.value))
+            this.setState({ filteredTracks: resultadoFiltrado, filtro: event.target.value })
+        } else {
+            this.setState({ filteredTracks: [], filtro: event.target.value})
+        }
+    }
+
 
     render() {
         return (
             <>
             <div>Hot Tracks</div>
-            
-          <article className="lista-songs">
-						<h1 className="title-songs">HOT TRACKS</h1>
-						<ul className="ul-de-songs">
- 							{this.state.tracks.map((Track, idx) => <CardTracks key = {Track + idx} trackData = {Track}/>)} 
- 
-						</ul>
-                        <button onClick={()=> this.traerMas()}> See More ...</button>
-					</article>
+            <article className="lista-songs">
+                <h1 className="title-songs">HOT TRACKS</h1>
+                <form className="search" onSubmit={this.evitarSubmit}>
+                    <input type="text" name="filter" placeholder="Filter..." onChange={(event) => this.filtrar(event)} value={this.state.filtro} />
+                </form>
+                <ul className="ul-de-songs">
+                    { this.state.filteredTracks.length > 0 ?
+                        this.state.filteredTracks.map((Track, idx) => <CardTracks key = {Track + idx} trackData = {Track}/>)
+                        : this.state.tracks.map((Track, idx) => <CardTracks key = {Track + idx} trackData = {Track}/>)
+                    } 
+
+                </ul>
+                <button onClick={()=> this.traerMas()}> See More ...</button>
+            </article>
             </>
-
-
-
-            
         )
     }
 }

@@ -1,4 +1,15 @@
-.errorPage{
-    border: 5px solid darkblue;
+.notFoundContainer {
+    align-items: flex-start;
+    background-image: url("/public/img/errorPage.png");
+    background-size: cover;
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: center;
+    height: 100vh;
+}
 
+.backButton {
+    cursor: pointer;
+   padding-top: 180px;
 }

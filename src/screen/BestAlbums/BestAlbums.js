@@ -7,7 +7,9 @@ class BestAlbums extends Component {
         super();
         this.state = {
             albums: [],
-            q: []
+            filteredAlbums: [],
+            q: 0,
+            filtro: "",
         }
     }
     componentDidMount(){
@@ -36,6 +38,18 @@ class BestAlbums extends Component {
         .catch( error => console.log(error));
     }
 
+    evitarSubmit(event) {
+        event.preventDefault();
+    }
+
+    filtrar(event) {
+        if (event.target.value !== "") {
+            const resultadoFiltrado = this.state.albums.filter(album => album.title.toLowerCase().startsWith(event.target.value))
+            this.setState({ filteredAlbums: resultadoFiltrado, filtro: event.target.value })
+        } else {
+            this.setState({ filteredAlbums: [], filtro: event.target.value})
+        }
+    }
 
     render() {
         return (
@@ -44,9 +58,14 @@ class BestAlbums extends Component {
 
             <article className="lista-albums">
 						<h1 className="title-albums">BEST NEW ALBUMS</h1>
+                        <form className="search" onSubmit={this.evitarSubmit}>
+                            <input type="text" name="filter" placeholder="Filter..." onChange={(event) => this.filtrar(event)} value={this.state.filtro} />
+                        </form>
 						<ul className="ul-de-albums">
-						{this.state.albums.map((oneAlbum, idx) => <CardAlbums  key = {oneAlbum + idx} albumData = {oneAlbum}/>)} 
-							
+						    { this.state.filteredAlbums.length > 0 ?
+                                this.state.filteredAlbums.map((oneAlbum, idx) => <CardAlbums  key = {oneAlbum + idx} albumData = {oneAlbum}/>)
+                                : this.state.albums.map((oneAlbum, idx) => <CardAlbums  key = {oneAlbum + idx} albumData = {oneAlbum}/>)
+                            } 
 						</ul>
                         <button onClick={()=> this.traerMas()}> See More ...</button>
 					</article>

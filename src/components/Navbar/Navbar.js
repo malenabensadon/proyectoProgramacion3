@@ -50,7 +50,7 @@ class NavBar extends Component {
             </section>
             <nav className="navegador">
                 <img src="img/logo3.PNG" alt="Logo Planet Music"/>
-                <form className="search">
+                <form className="search" onSubmit={this.evitarSubmit}>
                     <input type="text" name="search" placeholder="Search..." onChange={(event) => this.buscarResultado(event)} value={this.state.busqueda} />
                     <button type="submit" onClick={(event) => this.buscarResultado(event)} value={this.state.busqueda}><i className="fa fa-search"></i></button>
                     <i className="fas fa-exclamation-circle closeIcon"></i>
