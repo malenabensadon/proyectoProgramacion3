@@ -56,7 +56,7 @@ class DetailArtistCard extends Component {
                          <Link to={`/DetailAlbum/id/${onePopularAlbum.id}`}>
                             <img src={onePopularAlbum.cover_big} alt="Image of ${arrayInfo[i].title} Album"/>
                         </Link>
-                         <div class="contenedor-albumes-da">
+                         <div className="contenedor-albumes-da">
                             <h4><Link to={`/DetailAlbum/id/${onePopularAlbum.id}`}>{onePopularAlbum.title} </Link></h4>
                          </div>
                        </li>

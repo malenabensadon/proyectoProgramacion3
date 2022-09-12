@@ -32,22 +32,28 @@ class Favourites extends Component{
                             
                     ))
                     .catch(error => console.log('El error es' + error))
-                  
-            }) 
-            
+            })
         }
 }
 
+    borrarFav(id) {
+        const arrayFiltrado = this.state.tracks.filter((oneTrack) => oneTrack.id !== id);
+
+        this.setState({
+            tracks: arrayFiltrado
+        });
+    };
     
         render(){
-            console.log(this.state.tracks)
         return(
             <React.Fragment>
-                 <main class="main-playlist">
+                 <main className="main-playlist">
                 <h1 className="Titulo">My Favourite Tracks</h1>
                  <section className="playlist">
-                 <ul class="lista-playlist">
-                 {this.state.tracks.map((oneTrack, idx) => <FavouriteCard key={oneTrack + idx} trackData={oneTrack} />)} 
+                 <ul className="lista-playlist">
+                 {
+                    this.state.tracks.map((oneTrack, idx) => <FavouriteCard key={oneTrack + idx} trackData={oneTrack} borrar={(id) => this.borrarFav(id)}/>)
+                    } 
                  </ul>
                  </section>
                  </main>

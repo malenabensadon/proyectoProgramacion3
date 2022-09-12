@@ -10,7 +10,7 @@ class FavouriteCard extends Component {
         this.state = {
             valor: [],
             verMas: false,
-            fav: "Add to favourites",
+            fav: false,
             button: false
         } //recibe por props la info que le pasa el padre (Characters)
     }
@@ -32,7 +32,7 @@ class FavouriteCard extends Component {
 
         if(favourites.includes(this.props.trackData.id)){
             this.setState({
-                fav: 'Remove from favourites'
+                fav: true
             })
         }
 
@@ -50,15 +50,17 @@ class FavouriteCard extends Component {
 
         if(favourites.includes(id)){ 
             favourites = favourites.filter(unId => unId !== id);
+
+            this.props.borrar(id)
            
             this.setState({
-                fav: 'Add to favourites'
+                fav: false
             })
         } else {
             favourites.push(id);
       
             this.setState({
-                fav: 'Remove from favourites'
+                fav: true
             })
         }
         let favoritos = JSON.stringify(favourites);
@@ -94,7 +96,7 @@ class FavouriteCard extends Component {
                                    <img src={this.props.trackData.album.cover_big} alt="Image of ${data.title} Song"/>
                                    <div>
                                      <h5><Link to={`/DetailTrack/id/${this.props.trackData.id}`} className="link-playlist">{this.props.trackData.title}</Link>
-                                     <Link to={`/`}><i class="fas fa-trash"></i></Link></h5>
+                                     <Link to={`/favoritos`}><i className="fas fa-trash" onClick={()=>this.addFav(this.props.trackData.id)}></i></Link></h5>
                                      <p><Link to={`/DetailArtist/id/${this.props.trackData.artist.id}`}>- {this.props.trackData.artist.name}</Link></p>
                                    </div>
                                  </li> 

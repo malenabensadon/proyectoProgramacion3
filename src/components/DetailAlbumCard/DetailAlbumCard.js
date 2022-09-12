@@ -15,29 +15,29 @@ class DetailAlbumCard extends Component {
         
         return (
             <>
-            <main class="main-detail-album">
+            <main className="main-detail-album">
 
-                <div class="banner-detail-album">
-                    <img class="banner-album" src={this.props.albumData.cover_xl} />
-                    <img class="banner-album-responsive" src={this.props.albumData.cover_xl}/>
+                <div className="banner-detail-album">
+                    <img className="banner-album" src={this.props.albumData.cover_xl} />
+                    <img className="banner-album-responsive" src={this.props.albumData.cover_xl}/>
                 </div>
 
-                <article class="justice-title">
+                <article className="justice-title">
                 <h1> {this.props.albumData.title}</h1>
                 </article>
 
-                <article class="article-main-album">
-                <section class="section1-album">
+                <article className="article-main-album">
+                <section className="section1-album">
                 <ul>
-                    <img class="fotoalbum" src={this.props.albumData.cover_big} alt="Album"/>
+                    <img className="fotoalbum" src={this.props.albumData.cover_big} alt="Album"/>
                     <h6> </h6>
-                    <a href="detail-genres.html" class="genres-album">  </a>
+                    <a href="detail-genres.html" className="genres-album">  </a>
                 </ul>
                 </section>
 
-                <section class="section2-album">
-                <a href="detail-artist.html"><h3 class="detalles-album"> <Link to={`/detailArtist/id/${this.props.albumData.artist.id}`}>{this.props.albumData.artist.name}</Link> SONGS</h3></a>
-                <ul class="songs-album">
+                <section className="section2-album">
+                <a href="detail-artist.html"><h3 className="detalles-album"> <Link to={`/detailArtist/id/${this.props.albumData.artist.id}`}>{this.props.albumData.artist.name}</Link> SONGS</h3></a>
+                <ul className="songs-album">
                     {/* hacer un map */}
                     {this.props.albumData.tracks.data.map(oneAlbumTrack => <li><Link to={`/detailTrack/id/${oneAlbumTrack.id}`}> {oneAlbumTrack.title}</Link></li> )}
                 

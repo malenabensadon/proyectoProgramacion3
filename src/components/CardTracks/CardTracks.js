@@ -9,7 +9,7 @@ class CardTracks extends Component {
         this.state = {
             valor: [],
             verMas: false,
-            fav: "Add to favourites",
+            fav: false,
             button: false
         } //recibe por props la info que le pasa el padre (Characters)
     }
@@ -31,7 +31,7 @@ class CardTracks extends Component {
 
         if(favourites.includes(this.props.trackData.id)){
             this.setState({
-                fav: 'Remove from favourites'
+                fav: true
             })
         }
 
@@ -51,13 +51,13 @@ class CardTracks extends Component {
             favourites = favourites.filter(unId => unId !== id);
            
             this.setState({
-                fav: 'Add to favourites'
+                fav: false
             })
         } else {
             favourites.push(id);
       
             this.setState({
-                fav: 'Remove from favourites'
+                fav: true
             })
         }
         let favoritos = JSON.stringify(favourites);
@@ -79,8 +79,13 @@ class CardTracks extends Component {
                     <p><Link to={`/DetailArtist/id/${this.props.trackData.artist.id}`}> {this.props.trackData.artist.name}</Link></p>
                 </div>
                 <button onClick = {() => this.mostrarInfo()}><i className="fas fa-plus-circle"></i></button> 
-                {/* <button><i className="fa-solid fa-heart"></i></button> */}
-                <p className="link" onClick={()=>this.addFav(this.props.trackData.id)}>{this.state.fav}</p>
+                {
+                    this.state.fav ? 
+                    <>Tachito</>
+                    :
+                    <button><i className="fa-solid fa-heart" onClick={()=>this.addFav(this.props.trackData.id)}></i></button> 
+
+                }
                 {
                     this.state.verMas ? 
                     <p>{this.props.trackData.title}</p>
