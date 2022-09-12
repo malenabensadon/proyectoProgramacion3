@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router-dom';
 import FavouriteCard from "../../components/FavouriteCard/FavouriteCard"
 
 
@@ -43,17 +44,20 @@ class Favourites extends Component{
             tracks: arrayFiltrado
         });
     };
-    
-        render(){
+
+    render(){
         return(
             <React.Fragment>
-                 <main className="main-playlist">
+                <main className="main-playlist">
                 <h1 className="Titulo">My Favourite Tracks</h1>
-                 <section className="playlist">
-                 <ul className="lista-playlist">
-                 {
+                <section className="playlist">
+                <ul className="lista-playlist">
+                {
+                    this.state.tracks.length > 0 ?
                     this.state.tracks.map((oneTrack, idx) => <FavouriteCard key={oneTrack + idx} trackData={oneTrack} borrar={(id) => this.borrarFav(id)}/>)
-                    } 
+                    :
+                    <Link to = "/"> Go to Home </Link>
+                } 
                  </ul>
                  </section>
                  </main>
