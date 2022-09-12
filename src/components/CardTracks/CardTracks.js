@@ -31,7 +31,7 @@ class CardTracks extends Component {
 
         if(favourites.includes(this.props.trackData.id)){
             this.setState({
-                fav: 'Remove form favourites'
+                fav: 'Remove from favourites'
             })
         }
 
@@ -61,7 +61,7 @@ class CardTracks extends Component {
             })
         }
         let favoritos = JSON.stringify(favourites);
-        localStorage.setItem('favoritos', favoritos);
+        localStorage.setItem('favourites', favoritos);
 
         console.log(localStorage);
 

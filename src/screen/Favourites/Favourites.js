@@ -1,12 +1,13 @@
-import React, { Component } from 'react'
-import CardTracks from '../../components/CardTracks/CardTracks';
+import React, {Component} from 'react';
+import CardTracks from "../../components/CardTracks/CardTracks"
 
-class Favourites extends Component {
 
+
+class Favourites extends Component{
     constructor(){
         super();
         this.state = {
-            tracks: []
+            tracks: [],
         }
     }
 
@@ -15,37 +16,42 @@ class Favourites extends Component {
         let Storage = localStorage.getItem('favourites')
 
         if(Storage !== null){
-            favourites = JSON.parse(Storage)
-            let canciones = [];
+            favourites = JSON.parse(Storage) 
+            let favs = [];
 
-
-            favourites.forEach(idFav => {
-                let url = `https://thingproxy.freeboard.io/fetch/https://api.deezer.com/track/${idFav}`
+            
+            favourites.forEach(unId => {
+           
+                let url = `https://thingproxy.freeboard.io/fetch/https://api.deezer.com/track/${unId}`
                 fetch(url)
                     .then(response => response.json())
-                    .then(data => canciones.push(data))
-                    .then(()=> this.setState(
-                        {tracks: canciones}
-                        ))
-                    .catch(error => console.log(error))
-
-            })
+                    .then(data => favs.push(data))
+                    .then(() => this.setState(
+                        {
+                            tracks: favs }
+                            
+                    ))
+                    .catch(error => console.log('El error es' + error))
+                  
+            }) 
+            
         }
-    }
+}
 
-
-    render() {
-       console.log(this.state.tracks)
+    
+        render(){
+            console.log(this.state.tracks)
         return(
-            <>
-                    <h1>Favourite Tracks</h1>
-                    <section>
-                        {this.state.tracks.map((oneTrack, idx) => <CardTracks key={oneTrack + idx} trackData={oneTrack} />)}
-                    </section>
-
-            </>
+            <React.Fragment>
+                <h2 className="Titulo">My Favourite Tracks</h2>
+                 <section className="card-container-favs">
+                 {this.state.tracks.map((oneTrack, idx) => <CardTracks key={oneTrack + idx} trackData={oneTrack} />)} 
+                 </section>
+              
+            </React.Fragment>
         )
     }
 }
+
 
 export default Favourites;
