@@ -8,33 +8,36 @@ class DetailArtist extends Component {
         super(props);
         this.state = 
 		{
-			detail: [],
+			detail: {},
             artists: [],
-            albums: []
+            albums: [],
+            isLoading: true
         }
     }
 
     componentDidMount(){
-        let artista = []
         fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/artist/${this.props.match.params.id}`)
         .then( response => response.json())
-        .then( data => artista.push(data))
         .then( data => this.setState(
-                                { detail: artista }
+            { 
+            detail: data,
+            isLoading: false
+            
+            }
         ))
         .catch( error => console.log(error));
-        }
+    }
 
  
     render(){
-        console.log(this.props.match.params.id)
-        console.log(this.props.detail)
-        console.log(this.state.detail)
         return (
 			<>
-            <Header/>
-                {this.state.detail.map((oneDetail, idx) => <DetailArtistCard key={oneDetail + idx} artistData={oneDetail}/>)}
-                
+                <Header/>
+                {this.state.isLoading === true ?
+                    <div>Cargando...</div>
+                    :
+                <DetailArtistCard artistData={this.state.detail} />
+                }
 			</>
         )
     }

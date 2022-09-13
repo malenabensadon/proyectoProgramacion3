@@ -5,6 +5,7 @@ import './DetailArtistCard.css'
 class DetailArtistCard extends Component {
     constructor(props) {
         super(props);
+        console.log(props.artistData)
         this.state = {
             topSongs: [],
             topAlbums: [],
@@ -16,13 +17,13 @@ class DetailArtistCard extends Component {
         fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/artist/${this.props.artistData.id}/top`)
         .then( response => response.json())
         .then( data => this.setState(
-                                { topSongs: data.data}
+            { topSongs: data.data}
         ))
         .catch( error => console.log(error));
         fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/artist/${this.props.artistData.id}/albums?limit=${this.state.q}`)
         .then( response => response.json())
         .then( data => this.setState(
-                                { topAlbums: data.data}
+            { topAlbums: data.data}
         ))
         .catch( error => console.log(error));
         }

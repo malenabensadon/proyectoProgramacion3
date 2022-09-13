@@ -11,6 +11,7 @@ class HotTracks extends Component {
             q: [],
             filteredTracks: [],
             filtro: "",
+            isLoading: true
         }
     }
     componentDidMount(){
@@ -20,21 +21,25 @@ class HotTracks extends Component {
 			.then( response => response.json())
 			.then( data => this.setState(
 				{ tracks: data.data,
-                    q: 10
+                    q: 10,
+                    isLoading: false
                  }
 			)).catch( error => console.log(error));
 
     }
 
     traerMas(){
+        this.setState({ isLoading: true })
         //Traer la siguiente pagina de personajes 
         fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/tracks?limit=${this.state.q}`)
         //this.state.tracks)
         .then( response => response.json())
         .then( data => this.setState(
-                                {
+                            {
                                 tracks: data.data,
-                                q: this.state.q + 10}
+                                q: this.state.q + 10,
+                                isLoding: false
+                            }
         ))
         .catch( error => console.log(error));
     }
@@ -55,26 +60,27 @@ class HotTracks extends Component {
 
     render() {
         return (
-            
              <>
-
-
-<Header/>
-            
-            <article className="lista-songs">
-                <h1 className="title-songs">HOT TRACKS</h1>
-                <form className="search" onSubmit={this.evitarSubmit}>
-                    <input type="text" name="filter" placeholder="Filter..." onChange={(event) => this.filtrar(event)} value={this.state.filtro} />
-                </form>
-                <ul className="ul-de-songs">
-                    { this.state.filteredTracks.length > 0 ?
-                        this.state.filteredTracks.map((Track, idx) => <CardTracks key = {Track + idx} trackData = {Track}/>)
-                        : this.state.tracks.map((Track, idx) => <CardTracks key = {Track + idx} trackData = {Track}/>)
-                    } 
-
-                </ul>
-                <button onClick={()=> this.traerMas()}> See More ...</button>
-            </article>
+                <Header/>    
+                <article className="lista-songs">
+                    <h1 className="title-songs">HOT TRACKS</h1>  
+                    {this.state.isLoading === true ?
+                            <div>Cargando...</div>
+                        :
+                        <>
+                            <form className="search" onSubmit={this.evitarSubmit}>
+                                <input type="text" name="filter" placeholder="Filter..." onChange={(event) => this.filtrar(event)} value={this.state.filtro} />
+                            </form>
+                            <ul className="ul-de-songs">
+                                { this.state.filteredTracks.length > 0 ?
+                                    this.state.filteredTracks.map((Track, idx) => <CardTracks key = {Track + idx} trackData = {Track}/>)
+                                    : this.state.tracks.map((Track, idx) => <CardTracks key = {Track + idx} trackData = {Track}/>)
+                                } 
+                            </ul>
+                        </>
+                    }
+                    <button onClick={()=> this.traerMas()}> See More ...</button>
+                </article>
             </>
         )
     }

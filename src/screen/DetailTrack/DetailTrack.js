@@ -11,33 +11,33 @@ class DetailTrack extends Component {
 			detail: [],
             artists: [],
             albums: [],
+            isLoading: true
             
         }
     }
 
     componentDidMount(){
-        let cancion = []
         fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/track/${this.props.match.params.id}`)
         .then( response => response.json())
-        .then( data => cancion.push(data))
         .then( data => this.setState(
-                                { detail: cancion }
+            { 
+            detail: data,
+            isLoading: false
+         }
         ))
         .catch( error => console.log(error));
-        }
-
-        
+    }
 
  
     render(){
-        // console.log(this.props.match.params.id)
-        // console.log(this.props.detail)
-        // console.log(this.state.detail)
         return (
 			<>
             <Header/>
-                {this.state.detail.map((oneDetail, idx) => <DetailTrackCard key={oneDetail + idx} trackData={oneDetail}/>)}
-                
+                {this.state.isLoading === true ?
+                    <div>Cargando...</div>
+                    :
+            <DetailTrackCard trackData={this.state.detail} />
+                }   
 			</>
         )
     }

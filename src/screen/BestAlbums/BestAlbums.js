@@ -11,6 +11,7 @@ class BestAlbums extends Component {
             filteredAlbums: [],
             q: 0,
             filtro: "",
+            isLoading: true,
         }
     }
     componentDidMount(){
@@ -21,7 +22,8 @@ class BestAlbums extends Component {
 			.then( response => response.json())
 			.then( data => this.setState(
 				{ albums: data.data,
-                    q: 10
+                    q: 10,
+                    isLoading: false,
                 
                 }
 			)).catch( error => console.log(error));
@@ -29,12 +31,15 @@ class BestAlbums extends Component {
     }
 
     traerMas(){
+        this.setState({ isLoading: true })
         //Traer la siguiente pagina de personajes 
         fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/albums?limit=${this.state.q}`)
         .then( response => response.json())
         .then( data => this.setState(
                                 { albums: data.data,
-                                    q: this.state.q + 10}
+                                    q: this.state.q + 10,
+                                    isLoading: false
+                                }
         ))
         .catch( error => console.log(error));
     }
@@ -54,34 +59,28 @@ class BestAlbums extends Component {
 
     render() {
         return (
-
             <>
-
-
-            <Header/>
-
-          
-
-            <article className="lista-albums">
-						<h1 className="title-albums">BEST NEW ALBUMS</h1>
-                        <form className="search" onSubmit={this.evitarSubmit}>
-                            <input type="text" name="filter" placeholder="Filter..." onChange={(event) => this.filtrar(event)} value={this.state.filtro} />
-                        </form>
-						<ul className="ul-de-albums">
-						    { this.state.filteredAlbums.length > 0 ?
-                                this.state.filteredAlbums.map((oneAlbum, idx) => <CardAlbums  key = {oneAlbum + idx} albumData = {oneAlbum}/>)
-                                : this.state.albums.map((oneAlbum, idx) => <CardAlbums  key = {oneAlbum + idx} albumData = {oneAlbum}/>)
-                            } 
-						</ul>
-                        <button onClick={()=> this.traerMas()}> See More ...</button>
-					</article>
-                       
-					
+                <Header/>
+                <article className="lista-albums">
+                    <h1 className="title-albums">BEST NEW ALBUMS</h1>
+                    { this.state.isLoading === true ?
+                        <div>Cargando...</div>
+                        :
+                        <>
+                            <form className="search" onSubmit={this.evitarSubmit}>
+                                <input type="text" name="filter" placeholder="Filter..." onChange={(event) => this.filtrar(event)} value={this.state.filtro} />
+                            </form>
+                            <ul className="ul-de-albums">
+                                { this.state.filteredAlbums.length > 0 ?
+                                    this.state.filteredAlbums.map((oneAlbum, idx) => <CardAlbums  key = {oneAlbum + idx} albumData = {oneAlbum}/>)
+                                    : this.state.albums.map((oneAlbum, idx) => <CardAlbums  key = {oneAlbum + idx} albumData = {oneAlbum}/>)
+                                } 
+                            </ul>
+                        </>
+                    }
+                    <button onClick={()=> this.traerMas()}> See More ...</button>
+				</article>
             </>
-
-
-
-            
         )
     }
 }

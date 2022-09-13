@@ -31,7 +31,9 @@ class Favourites extends Component{
                     .then(data => favs.push(data))
                     .then(() => this.setState(
                         {
-                            tracks: favs }
+                            tracks: favs,
+                            isLoading: false
+                        }
                             
                     ))
                     .catch(error => console.log('El error es' + error))
@@ -54,29 +56,29 @@ class Favourites extends Component{
 			)
 		}
     }
-    
-    render(){
-        return(
 
-            <React.Fragment>
+    render(){
+        return (
+            <>
                 <Header/>
                 <main className="main-playlist">
                 <h1 className="Titulo">My Favourite Tracks</h1>
-                <section className="playlist">
-                <ul className="lista-playlist">
-                {
-                    this.state.tracks.length > 0 ?
-                    this.state.tracks.map((oneTrack, idx) => <FavouriteCard key={oneTrack + idx} trackData={oneTrack} borrar={(id) => this.borrarFav(id)}/>)
+                { this.state.isLoading === true ?
+                    <div>Cargando...</div>
                     :
-                    <Link to = "/"> Go to Home </Link>
-                } 
-                 </ul>
-                 </section>
+                    <section className="playlist">
+                        <ul className="lista-playlist">
+                        {
+                            this.state.tracks.length > 0 ?
+                            this.state.tracks.map((oneTrack, idx) => <FavouriteCard key={oneTrack + idx} trackData={oneTrack} borrar={(id) => this.borrarFav(id)}/>)
+                            :
+                            <Link to = "/"> Go to Home </Link>
+                        } 
+                        </ul>
+                    </section>
+                }
                  </main>
-
-    
-              
-            </React.Fragment>
+            </>
         )
     }
 }
