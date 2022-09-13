@@ -17,15 +17,15 @@ class CardArtists extends Component {
     //         verMas: !this.state.verMas
     //     })
     // }
-    
-    render(){
-        
+
+    render() {
+
         return (
             <li>
-                <img src={this.props.artistData.picture_big} alt="Image of {oneArtist.name}"/>
-            <div className="text">
-                <h5><Link to={`/DetailArtist/id/${this.props.artistData.id}`}>{this.props.artistData.name}</Link> </h5>
-            </div>
+                <img src={this.props.artistData.picture_big} alt="Image of {oneArtist.name}" />
+                <div className="text">
+                    <h5><Link to={`/DetailArtist/id/${this.props.artistData.id}`}>{this.props.artistData.name}</Link> </h5>
+                </div>
                 {/* <button onClick = {() => this.mostrarInfo()}><i className="fas fa-plus-circle"></i></button> 
                 {
                     this.state.verMas ? 

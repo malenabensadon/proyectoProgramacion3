@@ -12,28 +12,28 @@ class CardAlbums extends Component {
         }
     }
 
-    mostrarInfo (){
+    mostrarInfo() {
         this.setState({
             verMas: !this.state.verMas
         })
     }
-    
-    render(){
-        
+
+    render() {
+
         return (
             <li>
-                <img src={this.props.albumData.cover_big} alt="Image of {oneAlbum.title} Album"/> 
+                <img src={this.props.albumData.cover_big} alt="Image of {oneAlbum.title} Album" />
                 <div className="text">
                     <h5><Link to={`/DetailAlbum/id/${this.props.albumData.id}`}> {this.props.albumData.title}</Link></h5>
                     <p><a href="detail-artist.html?id={oneAlbum.artist.id}"> - {this.props.albumData.artist.name}</a></p>
                 </div>
-                <button onClick = {() => this.mostrarInfo()}><i className="fas fa-plus-circle"></i></button> 
+                <button onClick={() => this.mostrarInfo()}><i className="fas fa-plus-circle"></i></button>
                 {
-                    this.state.verMas ? 
-                    <p>{this.props.albumData.title}</p>
-                    :
-                    <></>
-                
+                    this.state.verMas ?
+                        <p>{this.props.albumData.title}</p>
+                        :
+                        <></>
+
                 }
             </li>
 

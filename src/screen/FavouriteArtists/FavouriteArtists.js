@@ -11,36 +11,37 @@ class FavouriteArtists extends Component {
             q: [],
             filteredArtists: [],
             filtro: "",
-            isLoading: true, 
+            isLoading: true,
         }
     }
-    componentDidMount(){
-    
+    componentDidMount() {
+
         fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/artists?limit=${this.state.q}`)
 
-    
-			.then( response => response.json())
-			.then( data => this.setState(
-				{ artists: data.data,
-                    q: 10, 
-                    isLoading: false, 
+
+            .then(response => response.json())
+            .then(data => this.setState(
+                {
+                    artists: data.data,
+                    q: 10,
+                    isLoading: false,
                 }
-			)).catch( error => console.log(error));
+            )).catch(error => console.log(error));
 
     }
 
-    traerMas(){
+    traerMas() {
         this.setState({ isLoading: true })
         fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/artists?limit=${this.state.q}`) //no se si esta bien volver a copiar el endpoint
-        .then( response => response.json())
-        .then( data => this.setState(
-            {
-                artists: data.data,
-                q: this.state.q + 10, 
-                isLoading: false,
-            }
-        ))
-        .catch( error => console.log(error));
+            .then(response => response.json())
+            .then(data => this.setState(
+                {
+                    artists: data.data,
+                    q: this.state.q + 10,
+                    isLoading: false,
+                }
+            ))
+            .catch(error => console.log(error));
     }
 
     evitarSubmit(event) {
@@ -52,34 +53,34 @@ class FavouriteArtists extends Component {
             const resultadoFiltrado = this.state.artists.filter(artist => artist.name.toLowerCase().startsWith(event.target.value))
             this.setState({ filteredArtists: resultadoFiltrado, filtro: event.target.value })
         } else {
-            this.setState({ filteredArtists: [], filtro: event.target.value})
+            this.setState({ filteredArtists: [], filtro: event.target.value })
         }
     }
 
     render() {
         return (
             <>
-                <Header/>
+                <Header />
                 <article className="lista-artist">
                     <h1 className="title-artist">FAVOURITE ARTISTS</h1>
                     {this.state.isLoading === true ?
                         <div>Cargando...</div>
-                    :
-                    <>
-                        <form className="search" onSubmit={this.evitarSubmit}>
-                            <input type="text" name="filter" placeholder="Filter..." onChange={(event) => this.filtrar(event)} value={this.state.filtro} />
-                        </form>
-                        <ul className="ul-de-artist">
-                            { this.state.filteredArtists.length > 0 ?
-                                this.state.filteredArtists.map((oneArtist, idx) => <CardArtists key = {oneArtist + idx} artistData = {oneArtist}/>)
-                                : this.state.artists.map((oneArtist, idx) => <CardArtists key = {oneArtist + idx} artistData = {oneArtist}/>)
-                            }
+                        :
+                        <>
+                            <form className="search" onSubmit={this.evitarSubmit}>
+                                <input type="text" name="filter" placeholder="Filter..." onChange={(event) => this.filtrar(event)} value={this.state.filtro} />
+                            </form>
+                            <ul className="ul-de-artist">
+                                {this.state.filteredArtists.length > 0 ?
+                                    this.state.filteredArtists.map((oneArtist, idx) => <CardArtists key={oneArtist + idx} artistData={oneArtist} />)
+                                    : this.state.artists.map((oneArtist, idx) => <CardArtists key={oneArtist + idx} artistData={oneArtist} />)
+                                }
                             </ul>
-                        <button onClick={()=> this.traerMas()}> See More ...</button>
-                    </>
-                }
+                            <button onClick={() => this.traerMas()}> See More ...</button>
+                        </>
+                    }
                 </article>
-            </>   
+            </>
         )
     }
 }

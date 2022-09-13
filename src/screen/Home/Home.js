@@ -7,59 +7,60 @@ import NavBar from '../../components/Navbar/Navbar';
 import { Link } from 'react-router-dom';
 
 class Home extends Component {
-    constructor() {
-        super();
-        this.state = 
+	constructor() {
+		super();
+		this.state =
 		{
 			tracks: [],
-            artists: [],
-            albums: [],
+			artists: [],
+			albums: [],
 			search: [],
 			isLoading: true,
-        }
-    }
+		}
+	}
 
-	componentDidMount(){
+	componentDidMount() {
 		this.buscarResultados();
-    }
+	}
 
 	buscarResultados(busqueda = "") {
 		if (busqueda === "") {
 			fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/tracks')
-			.then( response => response.json())
-			.then( data => this.setState(
-				{ tracks: data.data,
-					moreTracks: data.data
-				}
-			))
-			.then(() => {
-				fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/artists')
-				.then( response => response.json())
-				.then( data => this.setState(
-					{ artists: data.data }
+				.then(response => response.json())
+				.then(data => this.setState(
+					{
+						tracks: data.data,
+						moreTracks: data.data
+					}
 				))
 				.then(() => {
-					fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/albums')
-					.then( response => response.json())
-					.then( data => this.setState(
-						{ albums: data.data, isLoading: false }
-					))
-					.catch( error => console.log(error));
+					fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/artists')
+						.then(response => response.json())
+						.then(data => this.setState(
+							{ artists: data.data }
+						))
+						.then(() => {
+							fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/albums')
+								.then(response => response.json())
+								.then(data => this.setState(
+									{ albums: data.data, isLoading: false }
+								))
+								.catch(error => console.log(error));
+						})
+						.catch(error => console.log(error));
 				})
-				.catch( error => console.log(error));
-			})
-			.then(() => {
-				this.setState({ search: [] })
-			})
-			.catch( error => console.log(error));
+				.then(() => {
+					this.setState({ search: [] })
+				})
+				.catch(error => console.log(error));
 		} else {
 			this.setState({ isLoading: true })
 			fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/search?q=${busqueda}`)
-			.then( response => response.json())
-			.then( data => this.setState(
-				{ search: data.data, isLoading: false }
-			))
-			.catch( error => console.log(error));
+				.then(response => response.json())
+				.then(data => this.setState(
+					{ search: data.data, isLoading: false }
+				))
+				.catch(error => console.log(error));
 		}
 	}
 
@@ -74,7 +75,7 @@ class Home extends Component {
 				<article className="lista-songs">
 					<h1 className="title-songs">SEARCH RESULTS</h1>
 					<ul className="ul-de-songs">
-						{this.state.search.map((oneSearch, idx) => <CardTracks key = {oneSearch + idx} trackData = {oneSearch}/>)} 
+						{this.state.search.map((oneSearch, idx) => <CardTracks key={oneSearch + idx} trackData={oneSearch} />)}
 					</ul>
 				</article>
 			)
@@ -84,7 +85,7 @@ class Home extends Component {
 					<article className="lista-songs">
 						<h1 className="title-songs">HOT TRACKS</h1>
 						<ul className="ul-de-songs">
-							{this.state.tracks.map((oneTrack, idx) => <CardTracks key = {oneTrack + idx} trackData = {oneTrack}/>)} 
+							{this.state.tracks.map((oneTrack, idx) => <CardTracks key={oneTrack + idx} trackData={oneTrack} />)}
 
 						</ul>
 						<p><Link to="/hot-tracks">See All ...</Link></p>
@@ -92,15 +93,15 @@ class Home extends Component {
 					<article className="lista-albums">
 						<h1 className="title-albums">BEST NEW ALBUMS</h1>
 						<ul className="ul-de-albums">
-						{this.state.albums.map((oneAlbum, idx) => <CardAlbums  key = {oneAlbum + idx} albumData = {oneAlbum}/>)} 
-							
+							{this.state.albums.map((oneAlbum, idx) => <CardAlbums key={oneAlbum + idx} albumData={oneAlbum} />)}
+
 						</ul>
 						<p><Link to="/best-albums">See All ...</Link></p>
 					</article>
 					<article className="lista-artist">
 						<h1 className="title-artist">FAVOURITE ARTISTS</h1>
 						<ul className="ul-de-artist">
-						{this.state.artists.map((oneArtist, idx) => <CardArtists key = {oneArtist + idx} artistData = {oneArtist}/>)}
+							{this.state.artists.map((oneArtist, idx) => <CardArtists key={oneArtist + idx} artistData={oneArtist} />)}
 
 						</ul>
 						<p><Link to="/favourite-artists">See All ...</Link></p>
@@ -109,18 +110,18 @@ class Home extends Component {
 			)
 		}
 	}
- 
-    render(){
+
+	render() {
 		// hacemos un bind para que el setState llamado desde NavBar no tire error por ser llamado desde otro componente 
-        return (
+		return (
 			<>
 				<NavBar buscarResultados={this.buscarResultados.bind(this)} />
 				<main className="main-home">
 					{this.renderizarContenido()}
 				</main>
 			</>
-        )
-    }
+		)
+	}
 }
 
 export default Home;
