@@ -74,9 +74,9 @@ class DetailTrackCard extends Component {
                             <div className="title-track info-track">
                                 {
                                     this.state.fav ?
-                                        <i className="fas fa-trash" onClick={() => this.addFav(this.props.trackData.id)}></i>
+                                    <button className='button-heart'><i className="fas fa-trash icon" onClick={() => this.addFav(this.props.trackData.id)}></i></button>
                                         :
-                                        <button><i className="fa-solid fa-heart" onClick={() => this.addFav(this.props.trackData.id)}></i></button>
+                                        <button className='button-heart'><i className="fa-solid fa-heart icon" onClick={() => this.addFav(this.props.trackData.id)}></i></button>
 
                                 }
                                 {

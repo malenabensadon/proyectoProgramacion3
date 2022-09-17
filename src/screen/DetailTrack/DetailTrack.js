@@ -9,8 +9,6 @@ class DetailTrack extends Component {
         this.state =
         {
             detail: [],
-            artists: [],
-            albums: [],
             isLoading: true
 
         }

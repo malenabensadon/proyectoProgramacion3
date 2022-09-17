@@ -7,7 +7,7 @@ class DetailAlbum extends Component {
         super(props);
         this.state =
         {
-            detail: {},
+            detail: [],
             isLoading: true
         }
     }
@@ -26,10 +26,6 @@ class DetailAlbum extends Component {
 
 
     render() {
-
-        /*  console.log(this.props.match.params.id)
-         console.log(this.props.detail)
-         console.log(this.state.detail) */
         return (
             <>
                 <Header />

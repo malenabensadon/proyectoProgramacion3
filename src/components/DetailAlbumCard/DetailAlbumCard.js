@@ -21,9 +21,9 @@ class DetailAlbumCard extends Component {
                         <img className="banner-album-responsive" src={this.props.albumData.cover_xl} />
                     </div>
 
-                    <article className="justice-title">
+                    {/* <article className="justice-title">
                         <h1> {this.props.albumData.title}</h1>
-                    </article>
+                    </article> */}
 
                     <article className="article-main-album">
                         <section className="section1-album">
@@ -33,21 +33,22 @@ class DetailAlbumCard extends Component {
                                 <a href="detail-genres.html" className="genres-album">  </a>
                             </ul>
                         </section>
-
+                        <article className="justice-title">
+                        <h1> {this.props.albumData.title}</h1>
+                        
                         <section className="section2-album">
-                            <a href="detail-artist.html"><h3 className="detalles-album"> <Link to={`/detailArtist/id/${this.props.albumData.artist.id}`}>{this.props.albumData.artist.name}</Link> SONGS</h3></a>
+                            <a href="detail-artist.html"><h3 className="detalles-album"> <Link to={`/detailArtist/id/${this.props.albumData.artist.id}`}>{this.props.albumData.artist.name}</Link></h3></a>
                             <ul className="songs-album">
-                                {/* hacer un map */}
                                 {this.props.albumData.tracks.data.map(oneAlbumTrack => <li><Link to={`/detailTrack/id/${oneAlbumTrack.id}`}> {oneAlbumTrack.title}</Link></li>)}
 
                             </ul>
 
                         </section>
+                        </article>
 
                     </article>
 
                 </main>
-                <p>hoal</p>
             </>
 
         )

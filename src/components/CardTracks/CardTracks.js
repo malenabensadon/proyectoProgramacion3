@@ -80,9 +80,11 @@ class CardTracks extends Component {
                     <h5><Link to={`/DetailTrack/id/${this.props.trackData.id}`}>  {this.props.trackData.title}</Link> </h5>
                     <p><Link to={`/DetailArtist/id/${this.props.trackData.artist.id}`}> {this.props.trackData.artist.name}</Link></p>
                 </div>
+                <div className='icon-section'>
+                <button onClick={() => this.mostrarInfo()}><i className="fas fa-plus-circle"></i></button>
                 {
                     this.state.fav ?
-                        <> <i className="fas fa-trash" onClick={() => this.addFav(this.props.trackData.id)}></i></>
+                        <button> <i className="fas fa-trash" onClick={() => this.addFav(this.props.trackData.id)}></i></button>
                         :
                         <button><i className="fa-solid fa-heart" onClick={() => this.addFav(this.props.trackData.id)}></i></button>
 
@@ -94,8 +96,8 @@ class CardTracks extends Component {
                         <></>
 
                 }
-                <button onClick={() => this.mostrarInfo()}><i className="fas fa-plus-circle"></i></button>
-
+                
+                </div>
             </li>
 
 

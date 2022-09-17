@@ -8,9 +8,7 @@ class DetailArtist extends Component {
         super(props);
         this.state =
         {
-            detail: {},
-            artists: [],
-            albums: [],
+            detail: [],
             isLoading: true
         }
     }

@@ -72,7 +72,7 @@
     border-radius: 50%;
 }
 .text{
-    width: 75%;
+    width: 70%;
     height: 100%;
     padding-left: 5px;
     display: flex;
@@ -110,6 +110,25 @@ button:hover{
 }
 .fa-heart{
     color: rgb(52, 205, 52);
+}
+
+p a{
+    padding-left: 10px;
+}
+p a:hover{
+    color: rgba(191, 191, 191, 0.9);
+}
+
+.icon-section{
+    width: 10%;
+    display: flex;
+    justify-content: flex-end;
+}
+button i {
+    font-size: 15px;
+}
+.fa-trash{
+    font-size: 15px;
 }
 
 @media (max-width: 420px){

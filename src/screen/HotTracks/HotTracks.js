@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import CardTracks from '../../components/CardTracks/CardTracks';
 import Header from '../../components/Header/Header'
+import './HotTracks.css'
 
 
 class HotTracks extends Component {

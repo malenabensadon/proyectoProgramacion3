@@ -22,7 +22,7 @@
     flex-wrap: wrap;
 }
 .justice-title{
-    display: flex;
+    /* display: flex;
     text-align: center;
     justify-content: space-around;
     flex-direction: row;
@@ -32,13 +32,25 @@
     border-radius: 25px;
     background-color: rgba(82, 75, 75, 0.5);
     text-shadow: 4px 4px 7px black;
-    padding: 30px
+    padding: 30px */
+    width: 100%;
+    font-size: 70px;
+    margin-top: 50px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+ }
+ .justice-title h1{
+    padding: 10px;
+    padding-left: 30px;
+    font-size: 70px;
+    text-align: center;
  }
 .article-main-album{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.2);
     border-radius: 25px;
     margin: 55px;
     padding: 15px;
@@ -52,12 +64,34 @@
     border-radius: 25px;
  }
 .section2-album{
-    font-size: 30px;
+    font-size: 25px;
  }
+
+
+ .songs-album {
+    padding: 20px;
+ }
+ .songs-album li{
+        width: 100%;
+        flex-direction: row;
+        justify-content: center;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 10px; 
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+
+ }
+ .songs-album li a{
+    padding: 10px;
+ }
+.songs-album li:hover{
+        background-color: rgba(255, 255, 255, 0.15);
+    }
+ 
 .detalles-album{
     font-size: 45px;
-    text-shadow: 4px 4px 7px black;
-    text-align: center;
+    padding-left: 30px;
  }
 .detalles-album:hover{
     background-color: rgba(20, 20, 20, 0.2);
@@ -67,15 +101,19 @@
     background-color: rgba(255, 255, 255, 0.1);
     padding: 5px;
     border-radius: 10px; 
-    margin: 5px;
+    margin: 10px;
     display: flex;
     flex-wrap: wrap;
 }
+
 .section2-album  li:hover{
-    background-color: rgba(61, 59, 59, 0.15);
+    background-color: rgba(255, 255, 255, 0.15);
     cursor: pointer;
 }
-
+.section2-album li a:hover{
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: underline;
+}
 .genres-album{
     font-size: 45px;
     text-shadow: 4px 4px 7px black;
