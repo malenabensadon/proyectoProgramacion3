@@ -9,10 +9,10 @@ class HotTracks extends Component {
         super();
         this.state = {
             tracks: [],
-            q: [],
+            q: 0,
             filteredTracks: [],
             filtro: "",
-            isLoading: true
+            isLoading: true,
         }
     }
     componentDidMount() {
@@ -40,10 +40,11 @@ class HotTracks extends Component {
                 {
                     tracks: data.data,
                     q: this.state.q + 10,
-                    isLoding: false
+                    isLoading: false
                 }
             ))
             .catch(error => console.log(error));
+        
     }
 
     evitarSubmit(event) {
