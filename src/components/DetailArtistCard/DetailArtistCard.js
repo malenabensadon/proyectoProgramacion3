@@ -5,7 +5,6 @@ import './DetailArtistCard.css'
 class DetailArtistCard extends Component {
     constructor(props) {
         super(props);
-        console.log(props.artistData)
         this.state = {
             topSongs: [],
             topAlbums: [],
@@ -45,15 +44,15 @@ class DetailArtistCard extends Component {
                             <h1>{this.props.artistData.name}</h1>
                             <ul className="popular-songs">
                                 <h6>Popular Songs</h6>
-                                {this.state.topSongs.map(onePopularSong => <li><Link to={`/DetailTrack/id/${onePopularSong.id}`}>{onePopularSong.title}</Link></li>)}
+                                {this.state.topSongs.map((onePopularSong, idx) => <li key={onePopularSong + idx}><Link to={`/DetailTrack/id/${onePopularSong.id}`}>{onePopularSong.title}</Link></li>)}
 
                             </ul>
                         </section>
                         <section className="description-album">
                             <ul className="artist-albums">
                                 <h6>Albums </h6>
-                                {this.state.topAlbums.map(onePopularAlbum =>
-                                    <li>
+                                {this.state.topAlbums.map((onePopularAlbum, idx) =>
+                                    <li key={onePopularAlbum + idx}>
                                         <Link to={`/DetailAlbum/id/${onePopularAlbum.id}`}>
                                             <img src={onePopularAlbum.cover_big} alt="Image of ${arrayInfo[i].title} Album" />
                                         </Link>
