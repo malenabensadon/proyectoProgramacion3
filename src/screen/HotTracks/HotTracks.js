@@ -40,7 +40,7 @@ class HotTracks extends Component {
                 {
                     tracks: data.data,
                     q: this.state.q + 10,
-                    isLoding: false
+                    isLoading: false
                 }
             ))
             .catch(error => console.log(error));
