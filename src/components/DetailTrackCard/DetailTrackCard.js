@@ -93,7 +93,7 @@ class DetailTrackCard extends Component {
                         </section>
                         <section className="player">
                             <p><Link to="/favoritos">Go to my Favourites</Link></p>
-                            <p className="player-deezer"><iframe title="deezer-widget" src={`https://widget.deezer.com/widget/dark/track/${this.props.trackData.id}`} width="1050" height="125" frameborder="0" allowtransparency="true" allow="encrypted-media; clipboard-write"></iframe></p>
+                            <p className="player-deezer"><iframe title="deezer-widget" src={`https://widget.deezer.com/widget/dark/track/${this.props.trackData.id}`} width="1050" height="125" frameBorder="0" allowtransparency="true" allow="encrypted-media; clipboard-write"></iframe></p>
                         </section>
                     </article>
                 </main>

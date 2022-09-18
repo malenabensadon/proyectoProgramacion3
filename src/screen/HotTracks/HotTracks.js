@@ -9,7 +9,7 @@ class HotTracks extends Component {
         super();
         this.state = {
             tracks: [],
-            q: 0,
+            q: [],
             filteredTracks: [],
             filtro: "",
             isLoading: true,
@@ -40,11 +40,10 @@ class HotTracks extends Component {
                 {
                     tracks: data.data,
                     q: this.state.q + 10,
-                    isLoading: false
+                    isLoding: false
                 }
             ))
             .catch(error => console.log(error));
-        
     }
 
     evitarSubmit(event) {
