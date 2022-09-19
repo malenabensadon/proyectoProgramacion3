@@ -113,6 +113,7 @@ class Home extends Component {
 
 	render() {
 		// hacemos un bind para que el setState llamado desde NavBar no tire error por ser llamado desde otro componente 
+		// buscarResultados se une al contexto de Home, aunque la llame desde NavBar
 		return (
 			<>
 				<NavBar buscarResultados={this.buscarResultados.bind(this)} />
