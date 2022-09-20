@@ -85,7 +85,7 @@ class Home extends Component {
 					<article className="lista-songs">
 						<h1 className="title-songs">HOT TRACKS</h1>
 						<ul className="ul-de-songs">
-							{this.state.tracks.map((oneTrack, idx) => <CardTracks key={oneTrack + idx} trackData={oneTrack} />)}
+							{this.state.tracks.map((oneTrack, idx) => <CardTracks key={oneTrack.title + idx} trackData={oneTrack} />)}
 
 						</ul>
 						<p><Link to="/hot-tracks">See All ...</Link></p>
@@ -93,7 +93,7 @@ class Home extends Component {
 					<article className="lista-albums">
 						<h1 className="title-albums">BEST NEW ALBUMS</h1>
 						<ul className="ul-de-albums">
-							{this.state.albums.map((oneAlbum, idx) => <CardAlbums key={oneAlbum + idx} albumData={oneAlbum} />)}
+							{this.state.albums.map((oneAlbum, idx) => <CardAlbums key={oneAlbum.title + idx} albumData={oneAlbum} />)}
 
 						</ul>
 						<p><Link to="/best-albums">See All ...</Link></p>
@@ -101,7 +101,7 @@ class Home extends Component {
 					<article className="lista-artist">
 						<h1 className="title-artist">FAVOURITE ARTISTS</h1>
 						<ul className="ul-de-artist">
-							{this.state.artists.map((oneArtist, idx) => <CardArtists key={oneArtist + idx} artistData={oneArtist} />)}
+							{this.state.artists.map((oneArtist, idx) => <CardArtists key={oneArtist.name + idx} artistData={oneArtist} />)}
 
 						</ul>
 						<p><Link to="/favourite-artists">See All ...</Link></p>
@@ -113,6 +113,7 @@ class Home extends Component {
 
 	render() {
 		// hacemos un bind para que el setState llamado desde NavBar no tire error por ser llamado desde otro componente 
+		// buscarResultados se une al contexto de Home, aunque la llame desde NavBar
 		return (
 			<>
 				<NavBar buscarResultados={this.buscarResultados.bind(this)} />

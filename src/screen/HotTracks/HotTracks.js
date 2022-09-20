@@ -75,8 +75,8 @@ class HotTracks extends Component {
                             </form>
                             <ul className="ul-de-songs">
                                 {this.state.filteredTracks.length > 0 ?
-                                    this.state.filteredTracks.map((Track, idx) => <CardTracks key={Track + idx} trackData={Track} />)
-                                    : this.state.tracks.map((Track, idx) => <CardTracks key={Track + idx} trackData={Track} />)
+                                    this.state.filteredTracks.map((Track, idx) => <CardTracks key={Track.title + idx} trackData={Track} />)
+                                    : this.state.tracks.map((Track, idx) => <CardTracks key={Track.title + idx} trackData={Track} />)
                                 }
                             </ul>
                         </>

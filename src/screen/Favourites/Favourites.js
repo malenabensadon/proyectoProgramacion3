@@ -15,27 +15,36 @@ class Favourites extends Component {
 
     componentDidMount() {
         let favourites = [];
-        let Storage = localStorage.getItem('favourites')
+        let Storage = JSON.parse(localStorage.getItem('favourites'));
 
         if (Storage !== null) {
-            favourites = JSON.parse(Storage)
-            let favs = [];
-
-
-            favourites.forEach(unId => {
-
-                let url = `https://thingproxy.freeboard.io/fetch/https://api.deezer.com/track/${unId}`
-                fetch(url)
-                    .then(response => response.json())
-                    .then(data => favs.push(data))
-                    .then(() => this.setState(
-                        {
-                            tracks: favs,
-                            isLoading: false
-                        }
-
-                    ))
-                    .catch(error => console.log('El error es' + error))
+            if (Storage.length > 0) {
+                favourites = Storage
+                let favs = [];
+                
+                favourites.forEach(unId => {
+    
+                    let url = `https://thingproxy.freeboard.io/fetch/https://api.deezer.com/track/${unId}`
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => favs.push(data))
+                        .then(() => this.setState(
+                            {
+                                tracks: favs,
+                                isLoading: false
+                            }
+    
+                        ))
+                        .catch(error => console.log('El error es' + error))
+                })
+            } else {
+                this.setState({
+                    isLoading: false
+                })
+            }
+        } else {
+            this.setState({
+                isLoading: false
             })
         }
     }

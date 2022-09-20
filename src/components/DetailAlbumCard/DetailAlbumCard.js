@@ -33,7 +33,7 @@ class DetailAlbumCard extends Component {
                         <section className="section2-album">
                             <h3 className="detalles-album"> <Link to={`/detailArtist/id/${this.props.albumData.artist.id}`}>{this.props.albumData.artist.name}</Link></h3>
                             <ul className="songs-album">
-                                {this.props.albumData.tracks.data.map( (oneAlbumTrack, idx) => <li key={oneAlbumTrack + idx}><Link to={`/detailTrack/id/${oneAlbumTrack.id}`}> {oneAlbumTrack.title}</Link></li>)}
+                                {this.props.albumData.tracks.data.map( (oneAlbumTrack, idx) => <li key={oneAlbumTrack.title + idx}><Link to={`/detailTrack/id/${oneAlbumTrack.id}`}> {oneAlbumTrack.title}</Link></li>)}
                             </ul>
                         </section>
                         </article>

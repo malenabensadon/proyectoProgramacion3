@@ -72,8 +72,8 @@ class FavouriteArtists extends Component {
                             </form>
                             <ul className="ul-de-artist">
                                 {this.state.filteredArtists.length > 0 ?
-                                    this.state.filteredArtists.map((oneArtist, idx) => <CardArtists key={oneArtist + idx} artistData={oneArtist} />)
-                                    : this.state.artists.map((oneArtist, idx) => <CardArtists key={oneArtist + idx} artistData={oneArtist} />)
+                                    this.state.filteredArtists.map((oneArtist, idx) => <CardArtists key={oneArtist.name + idx} artistData={oneArtist} />)
+                                    : this.state.artists.map((oneArtist, idx) => <CardArtists key={oneArtist.name + idx} artistData={oneArtist} />)
                                 }
                             </ul>
                             <button onClick={() => this.traerMas()}> See More ...</button>

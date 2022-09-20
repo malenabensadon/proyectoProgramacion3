@@ -74,8 +74,8 @@ class BestAlbums extends Component {
                             </form>
                             <ul className="ul-de-albums">
                                 {this.state.filteredAlbums.length > 0 ?
-                                    this.state.filteredAlbums.map((oneAlbum, idx) => <CardAlbums key={oneAlbum + idx} albumData={oneAlbum} />)
-                                    : this.state.albums.map((oneAlbum, idx) => <CardAlbums key={oneAlbum + idx} albumData={oneAlbum} />)
+                                    this.state.filteredAlbums.map((oneAlbum, idx) => <CardAlbums key={oneAlbum.title + idx} albumData={oneAlbum} />)
+                                    : this.state.albums.map((oneAlbum, idx) => <CardAlbums key={oneAlbum.title + idx} albumData={oneAlbum} />)
                                 }
                             </ul>
                         </>

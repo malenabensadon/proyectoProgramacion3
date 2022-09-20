@@ -44,7 +44,7 @@ class DetailArtistCard extends Component {
                             <h1>{this.props.artistData.name}</h1>
                             <ul className="popular-songs">
                                 <h6>Popular Songs</h6>
-                                {this.state.topSongs.map((onePopularSong, idx) => <li key={onePopularSong + idx}><Link to={`/DetailTrack/id/${onePopularSong.id}`}>{onePopularSong.title}</Link></li>)}
+                                {this.state.topSongs.map((onePopularSong, idx) => <li key={onePopularSong.title + idx}><Link to={`/DetailTrack/id/${onePopularSong.id}`}>{onePopularSong.title}</Link></li>)}
 
                             </ul>
                         </section>
@@ -52,7 +52,7 @@ class DetailArtistCard extends Component {
                             <ul className="artist-albums">
                                 <h6>Albums </h6>
                                 {this.state.topAlbums.map((onePopularAlbum, idx) =>
-                                    <li key={onePopularAlbum + idx}>
+                                    <li key={onePopularAlbum.title + idx}>
                                         <Link to={`/DetailAlbum/id/${onePopularAlbum.id}`}>
                                             <img src={onePopularAlbum.cover_big} alt="Image of ${arrayInfo[i].title} Album" />
                                         </Link>
